@@ -1,18 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
-   <AppModuleConfigBag ApplicationName="com.adffaces.chapter3.model.services.HrAppModule">
-      <AppModuleConfig name="17D79FFDAD2" DeployPlatform="LOCAL" DBconnection="java:comp/env/jdbc/FacesHrDS" JDBCName="FacesHr" BC4JConfigName="HrAppModuleLocal" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="com.adffaces.chapter3.model.services.HrAppModule" jbo.project="com.adffaces.chapter3.model.Model">
-         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/FacesHrDS" jbo.SQLBuilder="Oracle"/>
-         <Security AppModuleJndiName="com.adffaces.chapter3.model.services.HrAppModule"/>
-         <Tester FullProxyInterfaceName="com.adffaces.chapter3.model.services.common.HrAppModule"/>
-         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:LastUsedConfiguration="HrAppModuleLocal" ns0:tester_classloader_enabled="true" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
-      </AppModuleConfig>
-   </AppModuleConfigBag>
-   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.AppModule">
-      <AppModuleConfig name="17D7A1379E3" JDBCName="FacesHr" DeployPlatform="LOCAL" jbo.project="com.adffaces.chapter3.model.Model" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="AppModuleLocal" ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.AppModule" DBconnection="java:comp/env/jdbc/FacesHrDS">
+   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule">
+      <AppModuleConfig name="17D7A514E99" JDBCName="FacesHr" DeployPlatform="LOCAL" jbo.project="com.adffaces.chapter3.model.Model" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="HrAppModuleLocal" ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule" DBconnection="java:comp/env/jdbc/FacesHrDS">
          <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS" jbo.SQLBuilder="Oracle"/>
-         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.AppModule"/>
-         <Tester FullProxyInterfaceName="com.packt.jdeveloper.cookbook.shared.bc.common.AppModule"/>
+         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
+         <Tester FullProxyInterfaceName="com.packt.jdeveloper.cookbook.shared.bc.test.common.HrAppModule"/>
          <Custom ns0:tester_classloader_enabled="true" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
       </AppModuleConfig>
    </AppModuleConfigBag>

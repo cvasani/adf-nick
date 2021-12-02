@@ -11,8 +11,8 @@
     <Attr Name="_jprName" Value="../../../../../Model.jpr"/>
     <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
     <Attr Name="_NamedConnection" Value="FacesHr"/>
-    <Attr Name="_appModuleNames0" Value="com.adffaces.chapter3.model.services.HrAppModule"/>
-    <Attr Name="_appModuleNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.AppModule"/>
+    <Attr Name="_appModuleNames0" Value="com.adffaces.chapter3.model.services.HrAppModuleOld"/>
+    <Attr Name="_appModuleNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
   </DesignTime>
   <Containee
     Name="associations"
@@ -55,15 +55,15 @@
     </DesignTime>
   </Containee>
   <Containee
-    Name="bc"
-    PackageName="com.packt.jdeveloper.cookbook.shared.bc"
+    Name="test"
+    PackageName="com.packt.jdeveloper.cookbook.shared.bc.test"
     ObjectType="JboPackage">
     <DesignTime>
-      <Attr Name="_EO" Value="true"/>
-      <Attr Name="_AS" Value="true"/>
-      <Attr Name="_VO" Value="true"/>
-      <Attr Name="_VL" Value="true"/>
       <Attr Name="_AM" Value="true"/>
+      <Attr Name="_EO" Value="true"/>
+      <Attr Name="_VO" Value="true"/>
+      <Attr Name="_AS" Value="true"/>
+      <Attr Name="_VL" Value="true"/>
     </DesignTime>
   </Containee>
 </JboProject>

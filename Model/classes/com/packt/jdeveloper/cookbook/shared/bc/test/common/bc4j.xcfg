@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!---->
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule">
+      <AppModuleConfig name="HrAppModuleLocal" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory"
+                       ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule" jbo.project="com.adffaces.chapter3.model.Model">
+         <Database jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/FacesHrDS" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="HrAppModuleShared" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory"
+                       ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule" jbo.project="com.adffaces.chapter3.model.Model">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Database jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/FacesHrDS" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

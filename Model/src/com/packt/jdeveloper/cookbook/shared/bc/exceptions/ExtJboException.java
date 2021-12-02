@@ -5,17 +5,20 @@ import com.packt.jdeveloper.cookbook.shared.bc.exceptions.messages.BundleUtils;
 
 import java.util.ResourceBundle;
 
+import oracle.adf.share.logging.ADFLogger;
+
 import oracle.jbo.JboException;
 
 
 public class ExtJboException extends JboException {
-
+    protected static ADFLogger logger = ADFLogger.createADFLogger(ExtJboException.class);
     /**
      * For testing purposes; remove or comment if not needed
      * @param args
      */
     public static void main(final String[] args) {
         // throw a custom exception with error code "00001" and two parameters
+        logger.info("Working here");
         throw new ExtJboException("00001",
                                   new String[] { "FirstParameter", "SecondParameter" });
     }
@@ -28,7 +31,9 @@ public class ExtJboException extends JboException {
      */
     public ExtJboException(final String errorCode,
                            final Object[] errorParameters) {
+        
         super(ResourceBundle.class, errorCode, errorParameters);
+       
     }
 
     /**

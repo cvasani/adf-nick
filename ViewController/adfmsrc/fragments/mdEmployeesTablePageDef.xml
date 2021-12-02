@@ -4,9 +4,9 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="EmployeesView1" RangeSize="25" DataControl="HrAppModuleDataControl" id="EmployeesView1Iterator"
+    <iterator Binds="EmployeesView1" RangeSize="25" DataControl="HrAppModuleOldDataControl" id="EmployeesView1Iterator"
               ChangeEventPolicy="ppr"/>
-    <iterator Binds="EmployeesView2" RangeSize="25" DataControl="HrAppModuleDataControl" id="EmployeesView2Iterator"
+    <iterator Binds="EmployeesView2" RangeSize="25" DataControl="HrAppModuleOldDataControl" id="EmployeesView2Iterator"
               ChangeEventPolicy="ppr"/>
   </executables>
   <bindings>

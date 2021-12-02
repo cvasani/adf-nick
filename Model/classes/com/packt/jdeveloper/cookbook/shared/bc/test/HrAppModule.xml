@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrAppModule"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModuleImpl"
+  DefClass="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModuleDefImpl"
+  ComponentInterface="com.packt.jdeveloper.cookbook.shared.bc.test.common.HrAppModule">
+  <DesignTime>
+    <Attr Name="_superClassName" Value="com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtApplicationModuleImpl"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.shared.bc.test.EmployeesView"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="testSQLProcedure"
+      MethodName="testSQLProcedure">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

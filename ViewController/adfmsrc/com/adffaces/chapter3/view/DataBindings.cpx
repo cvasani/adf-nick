@@ -39,7 +39,7 @@
           path="com.adffaces.chapter3.view.pageDefs.mdEmployeesListPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
-    <BC4JDataControl id="HrAppModuleDataControl" Package="com.adffaces.chapter3.model.services"
+    <BC4JDataControl id="HrAppModuleOldDataControl" Package="com.adffaces.chapter3.model.services"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
                      SupportsSortCollection="true" Configuration="HrAppModuleLocal" syncMode="Immediate"
