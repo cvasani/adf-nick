@@ -9,7 +9,11 @@
   DBObjectType="table"
   DBObjectName="EMPLOYEES"
   AliasName="Employees"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.packt.jdeveloper.cookbook.shared.bc.EmployeesImpl">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Attribute
     Name="EmployeeId"
     Precision="6"
