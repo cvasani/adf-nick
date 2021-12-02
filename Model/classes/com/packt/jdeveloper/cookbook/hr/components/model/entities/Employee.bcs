@@ -1,0 +1,12 @@
+//Groovy Scripts for com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee
+
+package com.packt.jdeveloper.cookbook.hr.components.model.entities
+
+import oracle.jbo.script.annotation.MessageParameterExpression;
+
+@MessageParameterExpression(validatorName="validateDepartmentEmployeeCount", name="ResExpressions_1")
+def validateDepartmentEmployeeCount_ResExpressions_1_MessageParameterValues()
+{
+source.getBundleParameter('DepartmentEmployeeLimit')
+}
+

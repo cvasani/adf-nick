@@ -1,5 +1,7 @@
 package com.packt.jdeveloper.cookbook.shared.bc.extensions;
 
+import com.packt.jdeveloper.cookbook.shared.bc.exceptions.messages.BundleUtils;
+
 import oracle.jbo.AttributeDef;
 import oracle.jbo.AttributeList;
 import oracle.jbo.server.EntityImpl;
@@ -67,5 +69,36 @@ public class ExtEntityImpl extends EntityImpl {
         }
 
         super.doDML(operation, transactionEvent);
+    }
+    
+   
+    /**
+     * Check if attribute's value differs from its posted value
+     * @param attrIdx the attribute index
+     * @return
+     */
+    protected boolean isAttrValueChanged(int attrIdx) {
+        // get the attribute's posted value
+        Object postedValue = getPostedAttribute(attrIdx);
+        // get the attribute's current value
+        Object newValue = getAttributeInternal(attrIdx);
+        // return true is attribute value differs from its posted value
+        return isAttributeChanged(attrIdx) &&
+            ((postedValue == null && newValue != null) ||
+             (postedValue != null && newValue == null) ||
+             (postedValue != null && newValue != null &&
+              !newValue.equals(postedValue)));
+    }
+    
+    /**
+     * Returns a parameter value from the parameters bundle using the parameter
+     * key passed as an argument.
+     * 
+     * @param parameterKey, the parameter key
+     * @return the parameter value from the parameters bundle
+     */
+    public String getBundleParameter(String parameterKey) {
+        // use BundleUtils to load the parameter
+        return BundleUtils.loadParameter(parameterKey);
     }
 }

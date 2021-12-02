@@ -13,6 +13,8 @@
     <Attr Name="_NamedConnection" Value="FacesHr"/>
     <Attr Name="_appModuleNames0" Value="com.adffaces.chapter3.model.services.HrAppModuleOld"/>
     <Attr Name="_appModuleNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
+    <Attr Name="_domainNames0" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.SharedProperties"/>
+    <Attr Name="_propSetNames0" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.SharedProperties"/>
   </DesignTime>
   <Containee
     Name="associations"
@@ -55,15 +57,67 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="assoc"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.entities.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="entities"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.entities"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="link"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.view.link"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="view"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.view"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="properties"
+    PackageName="com.packt.jdeveloper.cookbook.shared.bc.properties"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_DO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="test"
     PackageName="com.packt.jdeveloper.cookbook.shared.bc.test"
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_AM" Value="true"/>
-      <Attr Name="_EO" Value="true"/>
-      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="assoc"
+    PackageName="com.packt.jdeveloper.cookbook.shared.entities.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
       <Attr Name="_AS" Value="true"/>
-      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="entities"
+    PackageName="com.packt.jdeveloper.cookbook.shared.entities"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
     </DesignTime>
   </Containee>
 </JboProject>

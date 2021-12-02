@@ -17,13 +17,16 @@
   </DesignTime>
   <ViewUsage
     Name="Employees"
-    ViewObjectName="com.packt.jdeveloper.cookbook.shared.bc.test.EmployeesView"/>
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView"/>
   <ViewUsage
     Name="Managers"
-    ViewObjectName="com.packt.jdeveloper.cookbook.shared.bc.test.EmployeesView"/>
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView"/>
+  <ViewUsage
+    Name="Departments"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsView"/>
   <ViewLinkUsage
     Name="EmpManagerFkLink1"
-    ViewLinkObjectName="com.packt.jdeveloper.cookbook.shared.bc.test.EmpManagerFkLink"
+    ViewLinkObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"
     SrcViewUsageName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule.Employees"
     DstViewUsageName="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule.Managers"
     Reversed="false"/>

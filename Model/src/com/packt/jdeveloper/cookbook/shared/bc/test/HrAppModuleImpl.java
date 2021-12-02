@@ -98,5 +98,13 @@ public class HrAppModuleImpl extends ExtApplicationModuleImpl implements HrAppMo
     public ViewLinkImpl getEmpManagerFkLink1() {
         return (ViewLinkImpl) findViewLink("EmpManagerFkLink1");
     }
+
+    /**
+     * Container's getter for Departments1.
+     * @return Departments1
+     */
+    public ViewObjectImpl getDepartments() {
+        return (ViewObjectImpl) findViewObject("Departments");
+    }
 }
 
