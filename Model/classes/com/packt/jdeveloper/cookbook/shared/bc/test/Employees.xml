@@ -23,7 +23,15 @@
     Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="EMPLOYEES"
-    PrimaryKey="true"/>
+    PrimaryKey="true">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="CreateSequence"
+          Value="EMPLOYEES_SEQ"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="FirstName"
     Precision="100"
