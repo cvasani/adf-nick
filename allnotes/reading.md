@@ -39,7 +39,7 @@ Sample client , HTTP Analyzer Troubleshoot webservices REST SOAP Troubleshoot : 
 Code to get binding : https://oraclebpm11g.blogspot.com/2013/05/code-to-access-dcbindingcontainer.html
 ADF binding properties : https://docs.oracle.com/middleware/1213/adf/develop/appx-adf-binding-properties.htm
 Best way to handled VLAccessor .. not using directly but using AM : or through AM : https://andrejusb.blogspot.com/2012/05/view-link-accessor-usage-performance.html
-This is exact oppositive to waht we are duging in previous statement : 5.12.7 How to Automatically Refresh the View Object of the View Accessor
+This is exact oppositive to waht we are duging in previous statement : 5.12.7 How to Automatically Refresh the View Object of the View Accessor 
 AM Dirty : Pending changes : af:query for the search screen. Custom Listner : https://andrejusb.blogspot.com/2008/11/adf-query-component-and-view-criteria.html
 how to access detailed PVO using VL accessor : https://docs.oracle.com/middleware/1213/adf/develop/adf-bc-vo-master-detail.htm
 ROW Finder : Note that the capability of row finders to match rows using non-key attributes extends to master-detail related view objects  : 5.11.4 Programmatically Invoking the Row Finder
