@@ -21,10 +21,11 @@
     Scale="0"
     ColumnName="DEPARTMENT_ID"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="DEPARTMENTS"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    IsNotNull="true"/>
   <Attribute
     Name="DepartmentName"
     Precision="30"
@@ -33,7 +34,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="DEPARTMENTS"
-    PrimaryKey="true">
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -44,18 +45,30 @@
     Scale="0"
     ColumnName="MANAGER_ID"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="DEPARTMENTS"
-    PrimaryKey="true"/>
+    TableName="DEPARTMENTS"/>
   <Attribute
     Name="LocationId"
     ColumnName="LOCATION_ID"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="DEPARTMENTS"
-    PrimaryKey="true"/>
+    Precision="4"
+    Scale="0"/>
+  <Attribute
+    Name="IsNewRow"
+    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
+    SQLType="BIT"
+    Type="java.lang.Boolean"
+    ColumnType="$none$"
+    IsQueriable="false"
+    IsPersistent="false">
+    <DesignTime>
+      <Attr Name="_description" Value="IsNewRow"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="DepartmentManager"
     Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.assoc.DeptMgrFkAssoc"
@@ -70,25 +83,73 @@
     AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.assoc.EmpDeptFkAssoc.EmployeeDepartment"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Employee"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Employee"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
-    Name="DepartmentsPrimaryKey"
-    PrimaryKey="true">
+    Name="DepartmentsDepartmentIdCheck">
     <DesignTime>
-      <Attr Name="_DBObjectName" Value="DEPARTMENTS_PRIMARY_KEY"/>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPARTMENTS_DEPARTMENT_ID_CHEC"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DepartmentsDepartmentNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPARTMENTS_DEPARTMENT_NAME_CH"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.DepartmentName"/>
-      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.ManagerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPT_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptNameNn">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_NAME_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="DeptLocFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LOC_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_LOC_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.LocationId"/>
     </AttrArray>
   </Key>
   <Key
-    Name="fk_Departments">
+    Name="DeptMgrFk">
     <DesignTime>
-      <Attr Name="_referencedKey" Value="EMPLOYEES_PRIMARY_KEY"/>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
       <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="FK_DEPARTMENTS"/>
+      <Attr Name="_DBObjectName" Value="DEPT_MGR_FK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.ManagerId"/>

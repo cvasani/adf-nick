@@ -17,25 +17,25 @@
     Name="ManagerIdEmployees"
     Cardinality="1"
     Source="true"
-    Owner="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView">
+    Owner="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_finderName" Value="ManagerIdEmployees"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView.EmployeeId"/>
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees.EmployeeId"/>
     </AttrArray>
   </ViewLinkDefEnd>
   <ViewLinkDefEnd
     Name="EmployeesView"
     Cardinality="-1"
-    Owner="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView">
+    Owner="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_finderName" Value="EmployeesView"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView.ManagerId"/>
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees.ManagerId"/>
     </AttrArray>
   </ViewLinkDefEnd>
   <ResourceBundle>

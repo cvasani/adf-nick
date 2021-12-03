@@ -15,4 +15,11 @@ public class ExtApplicationModuleImpl extends ApplicationModuleImpl {
         // log a trace
         LOGGER.info("ExtApplicationModuleImpl was constructed");
     }
+    
+    public Object getCustomData(String key) {
+    // base class returns no custom data
+    return null;
+    }
+    
+    
 }

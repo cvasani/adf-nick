@@ -11,11 +11,12 @@
   RowClass="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeCountRowImpl"
   FetchMode="FETCH_AS_NEEDED"
   AccessMode="DEFAULT"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeCountImpl">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
     <Attr Name="_isCodegen" Value="true"/>
-    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>

@@ -19,8 +19,6 @@
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="ManagerIdEmployees"/>
-      <Attr Name="_foreignKey"
-        Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.EmployeesPrimaryKey"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.EmployeeId"/>
@@ -34,8 +32,6 @@
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="Employees"/>
-      <Attr Name="_foreignKey"
-        Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.fk_Employees"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.ManagerId"/>

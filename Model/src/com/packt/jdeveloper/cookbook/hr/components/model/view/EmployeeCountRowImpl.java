@@ -18,7 +18,7 @@ public class EmployeeCountRowImpl extends ViewRowImpl {
         private static final int firstIndex = 0;
 
         protected int index() {
-            return AttributesEnum.firstIndex() + ordinal();
+            return EmployeeCountRowImpl.AttributesEnum.firstIndex() + ordinal();
         }
 
         protected static final int firstIndex() {
@@ -26,16 +26,18 @@ public class EmployeeCountRowImpl extends ViewRowImpl {
         }
 
         protected static int count() {
-            return AttributesEnum.firstIndex() + AttributesEnum.staticValues().length;
+            return EmployeeCountRowImpl.AttributesEnum.firstIndex() + EmployeeCountRowImpl.AttributesEnum
+                                                                                          .staticValues().length;
         }
 
         protected static final AttributesEnum[] staticValues() {
             if (vals == null) {
-                vals = AttributesEnum.values();
+                vals = EmployeeCountRowImpl.AttributesEnum.values();
             }
             return vals;
         }
     }
+
 
     public static final int EMPLOYEECOUNT = AttributesEnum.EmployeeCount.index();
 

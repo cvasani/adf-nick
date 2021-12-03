@@ -1,2 +1,1 @@
-package com.packt.jdeveloper.cookbook.shared.entities;
-
+package com.packt.jdeveloper.cookbook.hr.components.model.entities;

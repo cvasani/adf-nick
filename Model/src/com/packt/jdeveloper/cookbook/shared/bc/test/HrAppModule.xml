@@ -17,13 +17,13 @@
   </DesignTime>
   <ViewUsage
     Name="Employees"
-    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView"/>
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees"/>
   <ViewUsage
     Name="Managers"
-    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesView"/>
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees"/>
   <ViewUsage
     Name="Departments"
-    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsView"/>
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.Departments"/>
   <ViewLinkUsage
     Name="EmpManagerFkLink1"
     ViewLinkObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"
@@ -35,6 +35,13 @@
     <Method
       Name="testSQLProcedure"
       MethodName="testSQLProcedure">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="removeEmployeeFromCollection"
+      MethodName="removeEmployeeFromCollection">
       <Return
         Name="_return_type_"
         Type="void"/>

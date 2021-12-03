@@ -2,6 +2,5 @@
 <MetadataDirectory xmlns="http://xmlns.oracle.com/adfm/metainf" version="11.1.1.0.0">
    <BusinessComponentProjectRegistry path="com/adffaces/chapter3/model/Model.jpx"/>
    <BusinessComponentServiceRegistry path="com/adffaces/chapter3/model/services/common/bc4j.xcfg"/>
-   <BusinessComponentServiceRegistry path="com/packt/jdeveloper/cookbook/shared/bc/common/bc4j.xcfg"/>
    <BusinessComponentServiceRegistry path="com/packt/jdeveloper/cookbook/shared/bc/test/common/bc4j.xcfg"/>
 </MetadataDirectory>

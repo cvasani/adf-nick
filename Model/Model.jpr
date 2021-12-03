@@ -76,7 +76,13 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADFbc"/>
+         <string v="ADFbc-Modeling"/>
+         <string v="Database"/>
+         <string v="Database-Modeling"/>
+         <string v="EJB-Modeling"/>
          <string v="Java"/>
+         <string v="Java-Modeling"/>
+         <string v="UML"/>
          <string v="XML"/>
       </list>
    </hash>
@@ -292,7 +298,17 @@
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
          </hash>
+         <hash n="forSQL">
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-Djbo.debugoutput=console"/>
+            <value n="name" v="forSQL"/>
+            <value n="targetURL"/>
+         </hash>
       </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+         <string v="forSQL"/>
+      </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">

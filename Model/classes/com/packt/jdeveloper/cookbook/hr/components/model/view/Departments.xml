@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Departments"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsRowImpl"
+  AccessMode="DEFAULT"
+  ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="Department"
+    Entity="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Department"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Department"
+    AliasName="DEPARTMENT_NAME"
+    PrimaryKey="true"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Department"
+    AliasName="MANAGER_ID"
+    PrimaryKey="true"/>
+  <ViewAttribute
+    Name="LocationId"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="Department"
+    AliasName="LOCATION_ID"
+    PrimaryKey="true"/>
+  <ViewAttribute
+    Name="IsNewRow"
+    PrecisionRule="true"
+    EntityAttrName="IsNewRow"
+    EntityUsage="Department"
+    AliasName="IS_NEW_ROW"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DepartmentId"/>
+    <Item Value="DepartmentName"/>
+    <Item Value="ManagerId"/>
+    <Item Value="LocationId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="Employees"
+    ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpDeptFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

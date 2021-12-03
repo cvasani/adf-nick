@@ -10,11 +10,11 @@
   DBObjectName="EMPLOYEES"
   AliasName="Employees"
   BindingStyle="OracleName"
-  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl"
-  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation"
+  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl">
   <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access"/>
     <Attr Name="_isCodegen" Value="true"/>
-    <Attr Name="_codeGenFlag2" Value="Delete|Access"/>
   </DesignTime>
   <ViewAccessor
     Name="EmployeeCount"
@@ -26,11 +26,11 @@
     Scale="0"
     ColumnName="EMPLOYEE_ID"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="EMPLOYEES"
     PrimaryKey="true"
-    Domain="com.packt.jdeveloper.cookbook.shared.bc.properties.SharedProperties">
+    IsNotNull="true">
     <Properties>
       <CustomProperties>
         <Property
@@ -41,7 +41,7 @@
   </Attribute>
   <Attribute
     Name="FirstName"
-    Precision="100"
+    Precision="20"
     ColumnName="FIRST_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -53,24 +53,26 @@
   </Attribute>
   <Attribute
     Name="LastName"
-    Precision="100"
+    Precision="25"
     ColumnName="LAST_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="EMPLOYEES">
+    TableName="EMPLOYEES"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </Attribute>
   <Attribute
     Name="Email"
-    Precision="300"
+    Precision="25"
     ColumnName="EMAIL"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="EMPLOYEES">
+    TableName="EMPLOYEES"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="300"/>
     </DesignTime>
@@ -91,19 +93,21 @@
     Name="HireDate"
     ColumnName="HIRE_DATE"
     SQLType="DATE"
-    Type="java.sql.Timestamp"
+    Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
-    TableName="EMPLOYEES"/>
+    TableName="EMPLOYEES"
+    IsNotNull="true"/>
   <Attribute
-    Name="Job"
-    Precision="200"
-    ColumnName="JOB"
+    Name="JobId"
+    IsNotNull="true"
+    Precision="10"
+    ColumnName="JOB_ID"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="EMPLOYEES">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="200"/>
+      <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -112,7 +116,7 @@
     Scale="2"
     ColumnName="SALARY"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="EMPLOYEES"/>
   <Attribute
@@ -121,7 +125,7 @@
     Scale="2"
     ColumnName="COMMISSION_PCT"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="EMPLOYEES"/>
   <Attribute
@@ -130,7 +134,7 @@
     Scale="0"
     ColumnName="MANAGER_ID"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="EMPLOYEES"/>
   <Attribute
@@ -139,48 +143,8 @@
     Scale="0"
     ColumnName="DEPARTMENT_ID"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="EMPLOYEES"/>
-  <Attribute
-    Name="Image"
-    Precision="500"
-    ColumnName="IMAGE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="EMPLOYEES">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="500"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="Color"
-    Precision="20"
-    ColumnName="COLOR"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="EMPLOYEES">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="20"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="Biography"
-    IsQueriable="false"
-    ColumnName="BIOGRAPHY"
-    SQLType="CLOB"
-    Type="oracle.jbo.domain.ClobDomain"
-    ColumnType="CLOB"
-    TableName="EMPLOYEES"/>
-  <Attribute
-    Name="CodeSample"
-    IsQueriable="false"
-    ColumnName="CODE_SAMPLE"
-    SQLType="CLOB"
-    Type="oracle.jbo.domain.ClobDomain"
-    ColumnType="CLOB"
     TableName="EMPLOYEES"/>
   <AccessorAttribute
     Name="Employees"
@@ -217,39 +181,159 @@
     AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.assoc.EmpDeptFkAssoc.DepartmentEmployees"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Department"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Employee"
+    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentImpl"
+    IsUpdateable="true"/>
   <Key
-    Name="EmployeesPrimaryKey"
+    Name="EmpEmailNn">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value='"EMAIL" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpEmailUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.Email"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpEmpIdPk"
     PrimaryKey="true">
     <DesignTime>
-      <Attr Name="_DBObjectName" Value="EMPLOYEES_PRIMARY_KEY"/>
+      <Attr Name="_DBObjectName" Value="EMP_EMP_ID_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.EmployeeId"/>
     </AttrArray>
   </Key>
   <Key
-    Name="fk_Employees">
+    Name="EmpHireDateNn">
     <DesignTime>
-      <Attr Name="_referencedKey" Value="EMPLOYEES_PRIMARY_KEY"/>
+      <Attr Name="_checkCondition" Value='"HIRE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_HIRE_DATE_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpJobNn">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value='"JOB_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpLastNameNn">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value='"LAST_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_LAST_NAME_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpSalaryMin">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value="salary > 0"/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_SALARY_MIN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmployeesEmailCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"EMAIL" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMPLOYEES_EMAIL_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.Email"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmployeesEmployeeIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"EMPLOYEE_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMPLOYEES_EMPLOYEE_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.EmployeeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmployeesHireDateCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"HIRE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMPLOYEES_HIRE_DATE_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.HireDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmployeesLastNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"LAST_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMPLOYEES_LAST_NAME_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.LastName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpDeptFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="DEPT_ID_PK"/>
       <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="FK_EMPLOYEES"/>
+      <Attr Name="_DBObjectName" Value="EMP_DEPT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpJobFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="JOB_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.JobId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpManagerFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_MANAGER_FK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.ManagerId"/>
     </AttrArray>
   </Key>
-  <validation:MethodValidationBean
-    Name="validateDepartmentEmployeeCount"
-    ResId="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee_Rule_0"
-    MethodName="validateEmployee">
-    <validation:ResExpressions
-      Name="validateDepartmentEmployeeCount_ResExprList">
-      <validation:Expression
-        Name="1"
-        trustMode="untrusted"
-        CodeSourceName="EmployeeRow"/>
-    </validation:ResExpressions>
-  </validation:MethodValidationBean>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.adffaces.chapter3.model.ModelBundle"/>

@@ -7,5 +7,7 @@ import oracle.jbo.ApplicationModule;
 // ---------------------------------------------------------------------
 public interface HrAppModule extends ApplicationModule {
     void testSQLProcedure();
+
+    void removeEmployeeFromCollection();
 }
 

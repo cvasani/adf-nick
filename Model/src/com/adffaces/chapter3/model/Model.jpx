@@ -70,6 +70,7 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_EO" Value="true"/>
+      <Attr Name="_AS" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee
@@ -102,22 +103,6 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_AM" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
-    Name="assoc"
-    PackageName="com.packt.jdeveloper.cookbook.shared.entities.assoc"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_AS" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
-    Name="entities"
-    PackageName="com.packt.jdeveloper.cookbook.shared.entities"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_EO" Value="true"/>
     </DesignTime>
   </Containee>
 </JboProject>

@@ -1,0 +1,20 @@
+//Groovy Scripts for com.packt.jdeveloper.cookbook.hr.components.model.view.Employees
+
+package com.packt.jdeveloper.cookbook.hr.components.model.view
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="LovSwitcher")
+def LovSwitcher_ExpressionScript_Expression()
+{
+if(JobId == 'PU_CLERK'){
+return 'LOV_Countries'
+} else if(JobId == 'ST_CLERK'){
+return 'LOV_Jobs'
+} else if(JobId == 'AD_PRES'){
+return 'LOV_Departments'
+} else {
+return 'LOV_Departments';
+}
+}
+
