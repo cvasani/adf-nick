@@ -1,0 +1,12 @@
+//Groovy Scripts for com.packt.jdeveloper.cookbook.hr.components.model.view.CascadingLovsView
+
+package com.packt.jdeveloper.cookbook.hr.components.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="EmployeesLov", name="inDepartmentId")
+def inDepartmentId_EmployeesLov_BindVariable_BoundParameter()
+{
+DepartmentId
+}
+

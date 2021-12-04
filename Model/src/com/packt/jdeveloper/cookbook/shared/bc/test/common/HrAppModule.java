@@ -9,5 +9,7 @@ public interface HrAppModule extends ApplicationModule {
     void testSQLProcedure();
 
     void removeEmployeeFromCollection();
+
+    void searchEmployeesUsingAdditionalCriteria();
 }
 

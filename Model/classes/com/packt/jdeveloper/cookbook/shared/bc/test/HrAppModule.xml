@@ -24,6 +24,12 @@
   <ViewUsage
     Name="Departments"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.Departments"/>
+  <ViewUsage
+    Name="EmployeeCount1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeCount"/>
+  <ViewUsage
+    Name="CascadingLovs"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.CascadingLovsView"/>
   <ViewLinkUsage
     Name="EmpManagerFkLink1"
     ViewLinkObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"
@@ -42,6 +48,13 @@
     <Method
       Name="removeEmployeeFromCollection"
       MethodName="removeEmployeeFromCollection">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="searchEmployeesUsingAdditionalCriteria"
+      MethodName="searchEmployeesUsingAdditionalCriteria">
       <Return
         Name="_return_type_"
         Type="void"/>

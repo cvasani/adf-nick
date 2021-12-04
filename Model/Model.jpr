@@ -300,7 +300,7 @@
          </hash>
          <hash n="forSQL">
             <value n="custom" v="false"/>
-            <value n="javaOptions" v="-Djbo.debugoutput=console"/>
+            <value n="javaOptions" v="-Djbo.debugoutput=console -Djbo.logging.show.function=true"/>
             <value n="name" v="forSQL"/>
             <value n="targetURL"/>
          </hash>

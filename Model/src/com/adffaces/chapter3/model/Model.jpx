@@ -15,6 +15,7 @@
     <Attr Name="_appModuleNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.test.HrAppModule"/>
     <Attr Name="_domainNames0" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.SharedProperties"/>
     <Attr Name="_propSetNames0" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.SharedProperties"/>
+    <Attr Name="_appModuleNames2" Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.AppModule"/>
   </DesignTime>
   <Containee
     Name="associations"
@@ -71,6 +72,7 @@
     <DesignTime>
       <Attr Name="_EO" Value="true"/>
       <Attr Name="_AS" Value="true"/>
+      <Attr Name="_AM" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee
