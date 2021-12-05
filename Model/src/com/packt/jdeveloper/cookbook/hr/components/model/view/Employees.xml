@@ -31,15 +31,22 @@
   <ViewAccessor
     Name="DepartmentsLov"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsLov"
+    AMUsageName="HrSharedComponentsAppModule"
+    ViewInstanceName="DepartmentsLov"
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="JobsLov"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.JobsLov"
+    AMUsageName="HrSharedComponentsAppModule"
+    ViewInstanceName="JobsLov"
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="CountriesLov"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.CountriesLov"
-    RowLevelBinds="true"/>
+    AMUsageName="HrSharedComponentsAppModule"
+    ViewInstanceName="CountriesLov"
+    RowLevelBinds="true"
+    RangeSize="10"/>
   <ListBinding
     Name="LOV_Departments"
     ListVOName="DepartmentsLov"

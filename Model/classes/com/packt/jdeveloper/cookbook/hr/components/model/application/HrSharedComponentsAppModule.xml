@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrSharedComponentsAppModule"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="CountriesLov"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.CountriesLov"/>
+  <ViewUsage
+    Name="DepartmentsLov"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsLov"/>
+  <ViewUsage
+    Name="EmployeesLov"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesLov"/>
+  <ViewUsage
+    Name="JobsLov"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.JobsLov"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.adffaces.chapter3.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

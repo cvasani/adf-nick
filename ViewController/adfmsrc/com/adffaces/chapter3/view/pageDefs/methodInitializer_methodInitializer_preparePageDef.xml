@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48"
+                id="methodInitializer_methodInitializer_preparePageDef" Package="com.adffaces.chapter3.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="prepare" RequiresUpdateModel="true" Action="invokeMethod" MethodName="prepare"
+                  IsViewObjectMethod="false" DataControl="HRComponentsAppModuleDataControl"
+                  InstanceName="bindings.prepare.dataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

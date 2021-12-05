@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule">
+    <AppModuleConfig name="HRComponentsCallerAppModuleLocal" jbo.project="com.adffaces.chapter3.model.Model"
+                     ApplicationName="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="HRComponentsCallerAppModuleShared" jbo.project="com.adffaces.chapter3.model.Model"
+                     ApplicationName="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

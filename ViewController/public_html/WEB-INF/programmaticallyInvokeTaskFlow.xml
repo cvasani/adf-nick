@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="programmaticallyInvokeTaskFlow">
+    <?audit suppress oracle.adfdt.controller.adfc.source.audit.TaskFlowReturnActivitiesNotDefined?>
+    <default-activity>router</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>taskFlowToCall</name>
+      <value>#{pageFlowScope.taskFlowToCall}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <router id="router">
+      <case id="__2">
+        <expression>#{pageFlowScope.taskFlowToCall == 'callMethodFlowInitializer'}</expression>
+        <outcome>callMethodFlowInitializer</outcome>
+      </case>
+      <case id="__3">
+        <expression>#{pageFlowScope.taskFlowToCall == 'callTaskFlowInitializer'}</expression>
+        <outcome>callTaskFlowInitializer</outcome>
+      </case>
+      <default-outcome>callTaskFlowInitializer</default-outcome>
+    </router>
+    <task-flow-call id="taskflowInitializer">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflowInitializer.xml</document>
+        <id>taskflowInitializer</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="methodInitializer">
+      <task-flow-reference>
+        <document>/WEB-INF/methodInitializer.xml</document>
+        <id>methodInitializer</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>router</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>callMethodFlowInitializer</from-outcome>
+        <to-activity-id>methodInitializer</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>callTaskFlowInitializer</from-outcome>
+        <to-activity-id>taskflowInitializer</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility>
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

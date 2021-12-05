@@ -70,6 +70,14 @@
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
    <value n="defaultPackage" v="com.adffaces.chapter3.model"/>
+   <hash n="ejbModuleContainer">
+      <hash n="ejb21IdToEjbNameMap">
+         <value n="ejb:848be819-017d-1000-8001-7f000101cdff" v="com.packt.jdeveloper.cookbook.shared.bc.test.common.HRComponentsAppModuleServiceBean"/>
+      </hash>
+      <url n="ejbJarNodeURL" path="src/META-INF/ejb-jar.xml"/>
+      <value n="ejbVersion" v="3.0"/>
+      <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
+   </hash>
    <value n="jbo.JpxName" v="com.adffaces.chapter3.model.Model"/>
    <value n="jbo.NoAttrEnumClasses" v="true"/>
    <value n="JboProject" v="true"/>
@@ -79,11 +87,16 @@
          <string v="ADFbc-Modeling"/>
          <string v="Database"/>
          <string v="Database-Modeling"/>
+         <string v="EJB"/>
          <string v="EJB-Modeling"/>
          <string v="Java"/>
          <string v="Java-Modeling"/>
          <string v="UML"/>
+         <string v="WSDL"/>
+         <string v="WSPolicy"/>
+         <string v="WebServices"/>
          <string v="XML"/>
+         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <value n="oracle.jbo.AMPackage" v="services"/>
@@ -348,6 +361,30 @@
             <value n="id" v="ADF Common Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="BC4J Service Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JAX-WS Web Services"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="EJB"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle JAX-WS Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Service Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <list n="libraryReferences">
          <hash>
@@ -384,6 +421,30 @@
          </hash>
          <hash>
             <value n="id" v="ADF Common Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Service Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JAX-WS Web Services"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="EJB"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle JAX-WS Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Service Client"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

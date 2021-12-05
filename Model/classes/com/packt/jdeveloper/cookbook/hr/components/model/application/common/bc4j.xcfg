@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule">
+    <AppModuleConfig name="HrSharedComponentsAppModuleLocal" jbo.project="com.adffaces.chapter3.model.Model"
+                     ApplicationName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="HrSharedComponentsAppModuleShared" jbo.project="com.adffaces.chapter3.model.Model"
+                     ApplicationName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule">
+    <AppModuleConfig name="HRComponentsAppModuleLocal" jbo.project="com.adffaces.chapter3.model.Model"
+                     ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule"
+                     JDBCName="FacesHr" DeployPlatform="LOCAL"
+                     TransactionFactory="com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtDatabaseTransactionFactory">
+      <Database jbo.TypeMapEntries="OracleApps"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

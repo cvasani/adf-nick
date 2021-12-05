@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Router
+      id="Router2">
+      <property
+         name="activityId">router</property>
+      <property
+         name="x">128.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>router&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="y">155.65625</property>
+      <property
+         name="exceptionHandler">false</property>
+   </Router>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskflowInitializer&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">taskflowInitializer</property>
+      <property
+         name="x">403.5664</property>
+      <property
+         name="y">148.51562</property>
+      <property
+         name="documentReference">/WEB-INF/taskflowInitializer.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">taskflowInitializer</property>
+   </TaskFlowCall>
+   <TaskFlowCall
+      id="TaskFlowCall4">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>methodInitializer&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">methodInitializer</property>
+      <property
+         name="x">438.75</property>
+      <property
+         name="y">342.51562</property>
+      <property
+         name="documentReference">/WEB-INF/methodInitializer.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">methodInitializer</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router2"
+      to="TaskFlowCall4">
+      <property
+         name="fromOutcome">callMethodFlowInitializer</property>
+      <property
+         name="sdm:polyPoints">R54,169.0,159.17188,397.75,342.53125,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">callTaskFlowInitializer</property>
+      <property
+         name="sdm:polyPoints">R46,169.0,152.17188,362.5664,148.53125,L50</property>
+   </ControlFlowCase>
+</SDM>

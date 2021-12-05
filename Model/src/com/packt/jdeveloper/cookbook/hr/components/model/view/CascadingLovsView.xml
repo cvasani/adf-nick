@@ -18,6 +18,8 @@
   <ViewAccessor
     Name="DepartmentsLov"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsLov"
+    AMUsageName="HrSharedComponentsAppModule"
+    ViewInstanceName="DepartmentsLov"
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="EmployeesLov"

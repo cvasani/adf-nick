@@ -349,5 +349,7 @@ public class EmployeesRowImpl extends ExtViewRowImpl {
     public RowSet getCountriesLov() {
         return (RowSet) getAttributeInternal(COUNTRIESLOV);
     }
+
+
 }
 

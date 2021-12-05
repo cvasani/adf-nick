@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ApplicationModulePoolStatistics"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatisticsRowImpl"
+  ComponentClass="com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatisticsImpl"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  AccessMode="DEFAULT">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatistics_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT NULL AS POOL_NAME, NULL AS APPLICATION_MODULE_CLASS, NULL
+AS AVAILABLE_INSTANCE_COUNT, NULL AS INIT_POOL_SIZE, NULL AS
+INSTANCE_COUNT, NULL AS MAX_POOL_SIZE, NULL AS NUM_OF_STATE_ACTIVATIONS, NULL AS NUM_OF_STATE_PASSIVATIONS,
+NULL AS NUM_OF_INSTANCES_REUSED, NULL AS REF_INSTANCES_RECYCLED,
+NULL AS UNREF_INSTANCES_RECYCLED, NULL AS
+REFERENCED_APPLICATION_MODULES, NULL AS NUM_OF_SESSIONS, NULL AS
+AVG_NUM_OF_SESSIONS_REF_STATE FROM DUAL]]></SQLQuery>
+  <ViewAttribute
+    Name="PoolName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="POOL_NAME"
+    Expression="POOL_NAME"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ApplicationModuleClass"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="APPLICATION_MODULE_CLASS"
+    Expression="APPLICATION_MODULE_CLASS"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="AvailableInstanceCount"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="AVAILABLE_INSTANCE_COUNT"
+    Expression="AVAILABLE_INSTANCE_COUNT"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="InitPoolSize"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="INIT_POOL_SIZE"
+    Expression="INIT_POOL_SIZE"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="InstanceCount"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="INSTANCE_COUNT"
+    Expression="INSTANCE_COUNT"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="MaxPoolSize"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="MAX_POOL_SIZE"
+    Expression="MAX_POOL_SIZE"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NumOfStateActivations"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="NUM_OF_STATE_ACTIVATIONS"
+    Expression="NUM_OF_STATE_ACTIVATIONS"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NumOfStatePassivations"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="NUM_OF_STATE_PASSIVATIONS"
+    Expression="NUM_OF_STATE_PASSIVATIONS"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NumOfInstancesReused"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="NUM_OF_INSTANCES_REUSED"
+    Expression="NUM_OF_INSTANCES_REUSED"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="RefInstancesRecycled"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="REF_INSTANCES_RECYCLED"
+    Expression="REF_INSTANCES_RECYCLED"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="UnrefInstancesRecycled"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="UNREF_INSTANCES_RECYCLED"
+    Expression="UNREF_INSTANCES_RECYCLED"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ReferencedApplicationModules"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="REFERENCED_APPLICATION_MODULES"
+    Expression="REFERENCED_APPLICATION_MODULES"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NumOfSessions"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="NUM_OF_SESSIONS"
+    Expression="NUM_OF_SESSIONS"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="AvgNumOfSessionsRefState"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="AVG_NUM_OF_SESSIONS_REF_STATE"
+    Expression="AVG_NUM_OF_SESSIONS_REF_STATE"
+    SQLType="VARCHAR"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="PoolName"/>
+    <Item Value="ApplicationModuleClass"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.adffaces.chapter3.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

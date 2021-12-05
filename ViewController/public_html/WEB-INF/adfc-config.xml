@@ -18,4 +18,17 @@
   <view id="mdEmployeesList">
     <page>/mdEmployeesList.jsf</page>
   </view>
+  <view id="taskFlowURLCaller">
+    <page>/taskFlowURLCaller.jsf</page>
+  </view>
+  <managed-bean id="__1">
+    <managed-bean-name>TaskFlowURLCallerBean</managed-bean-name>
+    <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.test</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>TaskFlowURLCaller</managed-bean-name>
+    <managed-bean-class>com.packt.jdeveloper.cookbook.hr.main.view.beans.TaskFlowURLCaller</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </adfc-config>
