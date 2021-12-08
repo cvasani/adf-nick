@@ -22,5 +22,7 @@ public interface HRComponentsAppModule extends ApplicationModule {
     void adjustCommission(oracle.jbo.domain.Number commissionPctAdjustment);
 
     void prepare();
+
+    void resetEmployees();
 }
 

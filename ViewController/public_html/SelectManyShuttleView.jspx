@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="SelectManyShuttleView.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow height="100%" id="gr1">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                            <!-- Content -->
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                      popupFetchListener="#{SelectManyShuttleBean.onEmployeeShuttleInit}">
+                                <af:dialog id="d2"
+                                           dialogListener="#{SelectManyShuttleBean.onSelectManyShuttleDialogListener}">
+                                    <f:facet name="buttonBar"/>
+                                    <af:selectManyShuttle value="#{bindings.Employees.inputValue}"
+                                                          label="#{bindings.Employees.label}" id="sms1">
+                                        <f:selectItems value="#{bindings.Employees.items}" id="si1"/>
+                                        <f:validator binding="#{bindings.Employees.validator}"/>
+                                    </af:selectManyShuttle>
+                                </af:dialog>
+                            </af:popup>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 
 import oracle.adf.controller.ControllerContext;
 import oracle.adf.controller.TaskFlowId;
+import oracle.adf.view.rich.event.DialogEvent;
 
 public class TaskFlowURLCaller {
     private String getURL;
@@ -45,5 +46,9 @@ public class TaskFlowURLCaller {
     public String getGetURL() {
         String getURL = this.ProgrammaticallyInvokeTaskFlow();
         return getURL;
+    }
+
+    public void onSelectManyShuttleDialogListener(DialogEvent dialogEvent) {
+        // Add event code here...
     }
 }

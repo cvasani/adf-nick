@@ -1,0 +1,12 @@
+//Groovy Scripts for com.packt.jdeveloper.cookbook.hr.components.model.view.UserInfo
+
+package com.packt.jdeveloper.cookbook.hr.components.model.view
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="inEmployeeName")
+def inEmployeeName_VariableScript_Variable()
+{
+adf.context.securityContext.userName
+}
+

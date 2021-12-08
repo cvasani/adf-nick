@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="QueryListnerPagePageDef"
+                Package="com.adffaces.chapter3.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Employees" RangeSize="25" DataControl="HRComponentsAppModuleDataControl" id="EmployeesIterator"/>
+    <searchRegion Criteria="EmployeesCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EmployeesIterator" id="EmployeesCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EmployeesIterator" id="Employees">
+      <nodeDefinition DefName="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees" Name="Employees0">
+        <AttrNames>
+          <Item Value="CommissionPct"/>
+          <Item Value="DepartmentId"/>
+          <Item Value="Email"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="HireDate"/>
+          <Item Value="LastName"/>
+          <Item Value="ManagerId"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="Salary"/>
+          <Item Value="LovAttrib"/>
+          <Item Value="LovSwitcher"/>
+          <Item Value="JobId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="resetEmployees" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetEmployees"
+                  IsViewObjectMethod="false" DataControl="HRComponentsAppModuleDataControl"
+                  InstanceName="bindings.resetEmployees.dataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

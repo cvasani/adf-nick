@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <af:document title="LongRunningTaskPage.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:toolbar id="t1">
+                <af:button text="Long Running Task" id="b1" partialSubmit="true"
+                           actionListener="#{pageFlowScope.LongRunningTask.longRunningTask}">
+                    <af:clientListener method="longRunningTask" type="action"/>
+                </af:button>
+            </af:toolbar>
+        </af:form>
+        <af:resource type="javascript">
+          function longRunningTask(evt) {
+          console.log("called long running task")
+              var popup = AdfPage.PAGE.findComponentByAbsoluteId('longRunningPopup');
+              if (popup != null) {
+                  AdfPage.PAGE.addBusyStateListener(popup, busyStateListener);
+                  evt.preventUserInput();
+                    console.log("you are here");
+              }
+          }
+
+          function busyStateListener(evt) {
+          console.log("called busyStateListner")
+              var popup = AdfPage.PAGE.findComponentByAbsoluteId('longRunningPopup');
+              if (popup != null) {
+                  if (evt.isBusy()) {
+                      popup.show();
+                  }
+                  else if (popup.isPopupVisible()) {
+                      popup.hide();
+                      AdfPage.PAGE.removeBusyStateListener(popup, busyStateListener);
+                  }
+              }
+          }
+        </af:resource>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="longRunningPopup" contentDelivery="immediate">
+            <af:dialog id="d2" title="Information">
+            
+                <f:facet name="buttonBar"/>
+                <af:outputText value="Long Operation in Progress .... Pllease Wait ...." id="ot1"/>
+            </af:dialog>
+        </af:popup>
+    </af:document>
+</f:view>

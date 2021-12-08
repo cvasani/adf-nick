@@ -23,6 +23,11 @@
     <page path="/methodinitializerView.jsf" usageId="com_adffaces_chapter3_view_methodinitializerViewPageDef"/>
     <page path="/WEB-INF/trainTaskFlow.xml#trainTaskFlow@prepare"
           usageId="com_adffaces_chapter3_view_trainTaskFlow_trainTaskFlow_preparePageDef"/>
+    <page path="/queryView.jsf" usageId="com_adffaces_chapter3_view_queryViewPageDef"/>
+    <page path="/TreeView.jsf" usageId="com_adffaces_chapter3_view_jsfPageDef"/>
+    <page path="/SelectManyShuttleView.jspx" usageId="com_adffaces_chapter3_view_SelectManyShuttleViewPageDef"/>
+    <page path="/tablelistner.jsf" usageId="com_adffaces_chapter3_view_tablelistnerPageDef"/>
+    <page path="/QueryListnerPage.jsf" usageId="com_adffaces_chapter3_view_QueryListnerPagePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_adffaces_chapter3_view_singleEmployeePageDef"
@@ -48,6 +53,14 @@
           path="com.adffaces.chapter3.view.pageDefs.methodinitializerViewPageDef"/>
     <page id="com_adffaces_chapter3_view_trainTaskFlow_trainTaskFlow_preparePageDef"
           path="com.adffaces.chapter3.view.pageDefs.trainTaskFlow_trainTaskFlow_preparePageDef"/>
+    <page id="com_adffaces_chapter3_view_queryViewPageDef" path="com.adffaces.chapter3.view.pageDefs.queryViewPageDef"/>
+    <page id="com_adffaces_chapter3_view_jsfPageDef" path="TreeView.jsfPageDef"/>
+    <page id="com_adffaces_chapter3_view_SelectManyShuttleViewPageDef"
+          path="com.adffaces.chapter3.view.pageDefs.SelectManyShuttleViewPageDef"/>
+    <page id="com_adffaces_chapter3_view_tablelistnerPageDef"
+          path="com.adffaces.chapter3.view.pageDefs.tablelistnerPageDef"/>
+    <page id="com_adffaces_chapter3_view_QueryListnerPagePageDef"
+          path="com.adffaces.chapter3.view.pageDefs.QueryListnerPagePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="HrAppModuleOldDataControl" Package="com.adffaces.chapter3.model.services"

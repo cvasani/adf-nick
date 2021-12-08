@@ -21,6 +21,8 @@ import javax.faces.context.FacesContext;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.myfaces.trinidad.event.SelectionEvent;
+
 
 /**
  * General useful static utilies for working with JSF.
@@ -77,6 +79,8 @@ public class JSFUtils {
      * @param argTypes
      * @param argValues
      * @return
+     * 
+     * Dynamic expression allocation to a Faces Example here : resource
      */
     public static Object resolveMethodExpression(String expression, 
                                                  Class returnType, 
@@ -92,6 +96,8 @@ public class JSFUtils {
         return methodExpression.invoke(elContext, argValues);
     }
 
+    
+    
     /**
      * Method for taking a reference to a JSF binding expression and returning
      * the matching Boolean.
@@ -417,4 +423,25 @@ public class JSFUtils {
         return newUrlBuffer.toString();
     }
 
+
+    /**
+     * Recipe: Using a custom af:table selection listener.
+     * 
+     * Invokes a method expression.
+     * 
+     * @param expr
+     * @param returnType
+     * @param argType
+     * @param argument
+     * @return
+     */
+    public static Object invokeMethodExpression(String expr, Class returnType, Class argType, Object argument) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ELContext elctx = fc.getELContext();
+        ExpressionFactory elFactory = fc.getApplication().getExpressionFactory();
+        MethodExpression methodExpr =
+            elFactory.createMethodExpression(elctx, expr, returnType, new Class[] { argType });
+        return methodExpr.invoke(elctx, new Object[] { argument });
+    }
+    
 }

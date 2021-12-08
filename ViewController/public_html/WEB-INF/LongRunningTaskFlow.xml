@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LongRunningTaskFlow">
+    <default-activity>LongRunningTaskViewActivity</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>LongRunningTask</managed-bean-name>
+      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.LongRunningTaskBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="LongRunningTaskViewActivity">
+      <page>/LongRunningTaskPage.jsf</page>
+    </view>
+    <visibility>
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

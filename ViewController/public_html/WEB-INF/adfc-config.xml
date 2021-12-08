@@ -31,4 +31,9 @@
     <managed-bean-class>com.packt.jdeveloper.cookbook.hr.main.view.beans.TaskFlowURLCaller</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>SelectManyShuttleBean</managed-bean-name>
+    <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.SelectManyShuttleBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

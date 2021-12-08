@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">QueryListnerView</property>
+      <property
+         name="x">490.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>QueryListnerView&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">106.25</property>
+      <property
+         name="page">/QueryListnerPage.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

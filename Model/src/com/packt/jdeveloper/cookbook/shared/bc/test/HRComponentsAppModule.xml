@@ -110,6 +110,13 @@
         Name="_return_type_"
         Type="void"/>
     </Method>
+    <Method
+      Name="resetEmployees"
+      MethodName="resetEmployees">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
   </ClientInterface>
   <ServiceInterface
     Name="__serviceInterface">

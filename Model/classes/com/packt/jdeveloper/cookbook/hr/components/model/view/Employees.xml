@@ -28,6 +28,14 @@
         ResId="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="varFirstName"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varLastName"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="DepartmentsLov"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsLov"
@@ -205,6 +213,51 @@
     EntityAttrName="JobId"
     EntityUsage="Employees"
     AliasName="JOB_ID"/>
+  <ViewCriteria
+    Name="EmployeesCriteria"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.Employees"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="EmployeesCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="FirstName"
+        ViewAttribute="FirstName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":varFirstName"
+        UpperColumns="1"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LastName"
+        ViewAttribute="LastName"
+        Operator="CONTAINS"
+        Conjunction="OR"
+        Value=":varLastName"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="EmployeesView"
     ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"

@@ -20,6 +20,7 @@
       Value="com.packt.jdeveloper.cookbook.hr.components.caller.HRComponentsCallerAppModule"/>
     <Attr Name="_appModuleNames4"
       Value="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"/>
+    <Attr Name="_appModuleNames5" Value="com.packt.jdeveloper.cookbook.shared.bc.test.UserInfoAppModule"/>
   </DesignTime>
   <Containee
     Name="associations"

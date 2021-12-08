@@ -27,6 +27,7 @@ import java.sql.Types;
 import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.Row;
+import oracle.jbo.ViewCriteria;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -42,6 +43,7 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
     private static final ADFLogger LOGGER = ADFLogger.createADFLogger(ExtApplicationModuleImpl.class);
     public static final String DEFAULT_DEPARTMENT_ID_KEY = "DEFAULT_DEPARTMENT_ID";
     public static final Number DEFAULT_DEPARTMENT_ID = new Number(101);
+
     /**
      * This is the default constructor (do not remove).
      */
@@ -54,15 +56,15 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         super.getAMPoolStatistics();
     }
 
-//    @Override
-//    public ExtViewObjectImpl getApplicationModulePoolStatistics() {
-//        // TODO Implement this method
-//        return super.getApplicationModulePoolStatistics();
-//    }
-    
-        public Boolean getApplicationModulePoolStatistics2() {
-            // TODO Implement this method
-        ExtViewObjectImpl applicationModulePoolStatistics = (ExtViewObjectImpl)getApplicationModulePoolStatistics();
+    //    @Override
+    //    public ExtViewObjectImpl getApplicationModulePoolStatistics() {
+    //        // TODO Implement this method
+    //        return super.getApplicationModulePoolStatistics();
+    //    }
+
+    public Boolean getApplicationModulePoolStatistics2() {
+        // TODO Implement this method
+        ExtViewObjectImpl applicationModulePoolStatistics = (ExtViewObjectImpl) getApplicationModulePoolStatistics();
         Boolean v_return = (applicationModulePoolStatistics == null) ? false : true;
         return v_return;
     }
@@ -84,9 +86,8 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
     @Override
     public Object getCustomData(String key) {
         // TODO Implement this method
-//        return super.getCustomData(key);
-        return DEFAULT_DEPARTMENT_ID_KEY.equals(key)
-        ? DEFAULT_DEPARTMENT_ID : null;
+        //        return super.getCustomData(key);
+        return DEFAULT_DEPARTMENT_ID_KEY.equals(key) ? DEFAULT_DEPARTMENT_ID : null;
     }
 
     /**
@@ -158,15 +159,14 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         return (DepartmentsImpl) findViewObject("Departments");
     }
 
-// Remove employee from collection. Just from collection 
+    // Remove employee from collection. Just from collection
     public void removeEmployeeFromCollection() {
-    // get the current employee
-    EmployeesRowImpl employee =
-    (EmployeesRowImpl)(this.getEmployees().getCurrentRow());
-    // remove employee from collection
-    if (employee != null) {
-    employee.removeFromCollection();
-    }
+        // get the current employee
+        EmployeesRowImpl employee = (EmployeesRowImpl) (this.getEmployees().getCurrentRow());
+        // remove employee from collection
+        if (employee != null) {
+            employee.removeFromCollection();
+        }
     }
 
 
@@ -177,30 +177,28 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
     public EmployeeCountImpl getEmployeeCount1() {
         return (EmployeeCountImpl) findViewObject("EmployeeCount1");
     }
-    
+
     public void searchEmployeesUsingAdditionalCriteria() {
-    // invoke searchUsingAdditionalCriteria() to create
-    // result set based on View criteria item
-    // data obtained from another view object's rowset
-//    this.getEmployees()
-//    .searchUsingAdditionalCriteria(this.getCascadingLovs(),
-//    new String[] { "EmployeeId" });
-//    
-//        this.getEmployees()
-//        .searchUsingAdditionalCriteria(this.getCascadingLovs(),
-//        new String[] { "EmployeeId", "DepartmentId"});
+        // invoke searchUsingAdditionalCriteria() to create
+        // result set based on View criteria item
+        // data obtained from another view object's rowset
+        //    this.getEmployees()
+        //    .searchUsingAdditionalCriteria(this.getCascadingLovs(),
+        //    new String[] { "EmployeeId" });
+        //
+        //        this.getEmployees()
+        //        .searchUsingAdditionalCriteria(this.getCascadingLovs(),
+        //        new String[] { "EmployeeId", "DepartmentId"});
 
 
-        EmployeesImpl additionalCriteria =
-            this.getEmployees();
-                additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(), new String[] { "EmployeeId" });
+        EmployeesImpl additionalCriteria = this.getEmployees();
+        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(), new String[] { "EmployeeId" });
 
-        additionalCriteria
-            .searchUsingAdditionalCriteria(this.getCascadingLovs(),
-            new String[] { "EmployeeId", "DepartmentId"});
-        
+        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(),
+                                                         new String[] { "EmployeeId", "DepartmentId" });
+
         additionalCriteria.setViewCriteriaCaseInsensitive(true);
-    
+
     }
 
     /**
@@ -215,10 +213,10 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
      * @param commissionPctAdjustment
      */
     public void adjustCommission(Number commissionPctAdjustment) {
-    // execute the Employees view object query to createa rowset
-    this.getEmployees().executeQuery();
-    // adjust the employees commission
-    this.getEmployees().adjustCommission(commissionPctAdjustment);
+        // execute the Employees view object query to createa rowset
+        this.getEmployees().executeQuery();
+        // adjust the employees commission
+        this.getEmployees().adjustCommission(commissionPctAdjustment);
     }
 
 
@@ -229,19 +227,31 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
     public ApplicationModulePoolStatisticsImpl getApplicationModulePoolStatistics() {
         return (ApplicationModulePoolStatisticsImpl) findViewObject("ApplicationModulePoolStatistics");
     }
-    
-// Preparing for the employee creation    
+
+    // Preparing for the employee creation
     public void prepare() {
-    // get the Employees view object instance
-    EmployeesImpl employees = this.getEmployees();
-    // remove all rows from rowset
-    employees.executeEmptyRowSet();
-    // create a new employee row
-    Row employee = employees.createRow();
-    // add the new employee to the rowset
-    employees.insertRow(employee);
+        // get the Employees view object instance
+        EmployeesImpl employees = this.getEmployees();
+        // remove all rows from rowset
+        employees.executeEmptyRowSet();
+        // create a new employee row
+        Row employee = employees.createRow();
+        // add the new employee to the rowset
+        employees.insertRow(employee);
     }
-    
+
+
+    public void resetEmployees() {
+        EmployeesImpl employees = this.getEmployees();
+        ViewCriteria vc = employees.getViewCriteria("EmployeesCriteria");
+        // reset view criteria
+        super.resetCriteriaValues(vc);
+        employees.removeViewCriteria("EmployeesCriteria");
+        employees.applyViewCriteria(vc);
+        // reset Employees view object
+        employees.executeEmptyRowSet();
+    }
+
 
 }
 
