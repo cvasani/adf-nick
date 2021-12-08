@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CollectionPaginationPage.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                    </af:gridCell>
+                    <af:gridCell id="gc2">
+                        <af:panelBox text="Page # #{CollectionPaginationBean.pageNumber}" id="pb1">
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t1">
+                                    <af:button text="button 1" id="b1"/>
+                                    <af:commandButton text="First" id="cb1"
+                                                      actionListener="#{CollectionPaginationBean.onFirst}" disabled="#{CollectionPaginationBean.previousRowAvailable
+eq false}"/>
+                                    <af:commandButton text="Previous" id="cb2"
+                                                      actionListener="#{CollectionPaginationBean.onPrevious}" disabled="#{CollectionPaginationBean.previousRowAvailable
+eq false}"/>
+                                    <af:commandButton text="Next" id="cb3"
+                                                      actionListener="#{CollectionPaginationBean.onNext}" disabled="#{CollectionPaginationBean.nextRowAvailable
+eq false}"/>
+                                    <af:commandButton text="Last" id="cb4"
+                                                      actionListener="#{CollectionPaginationBean.onLast}" disabled="#{CollectionPaginationBean.nextRowAvailable
+eq false}"/>
+                                </af:toolbar>
+                            </f:facet>
+                            <af:iterator id="i1" value="#{bindings.Employees.collectionModel}" var="row"
+                                         rows="#{bindings.Employees.rangeSize}"
+                                         binding="#{CollectionPaginationBean.employeesIterator}">
+                                <af:outputText value="#{row.CommissionPct}"
+                                               shortDesc="#{bindings.Employees.hints.CommissionPct.tooltip}" id="ot1">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Employees.hints.CommissionPct.format}"/>
+                                </af:outputText>
+                                <af:outputText value="#{row.JobId}"
+                                               shortDesc="#{bindings.Employees.hints.JobId.tooltip}" id="ot12"/>
+                                <af:outputText value="#{row.LovSwitcher}"
+                                               shortDesc="#{bindings.Employees.hints.LovSwitcher.tooltip}" id="ot11"/>
+                                <af:selectOneChoice value="#{row.bindings.LovAttrib.inputValue}"
+                                                    label="#{row.bindings.LovAttrib.label}"
+                                                    required="#{bindings.Employees.hints.LovAttrib.mandatory}"
+                                                    shortDesc="#{bindings.Employees.hints.LovAttrib.tooltip}"
+                                                    readOnly="true" id="soc1">
+                                    <f:selectItems value="#{row.bindings.LovAttrib.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.LovAttrib.validator}"/>
+                                </af:selectOneChoice>
+                                <af:outputText value="#{row.Salary}"
+                                               shortDesc="#{bindings.Employees.hints.Salary.tooltip}" id="ot10">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Employees.hints.Salary.format}"/>
+                                </af:outputText>
+                                <af:outputText value="#{row.PhoneNumber}"
+                                               shortDesc="#{bindings.Employees.hints.PhoneNumber.tooltip}" id="ot9"/>
+                                <af:outputText value="#{row.ManagerId}"
+                                               shortDesc="#{bindings.Employees.hints.ManagerId.tooltip}" id="ot8">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Employees.hints.ManagerId.format}"/>
+                                </af:outputText>
+                                <af:outputText value="#{row.LastName}"
+                                               shortDesc="#{bindings.Employees.hints.LastName.tooltip}" id="ot7"/>
+                                <af:outputText value="#{row.HireDate}"
+                                               shortDesc="#{bindings.Employees.hints.HireDate.tooltip}" id="ot6">
+                                    <af:convertDateTime pattern="#{bindings.Employees.hints.HireDate.format}"/>
+                                </af:outputText>
+                                <af:outputText value="#{row.FirstName}"
+                                               shortDesc="#{bindings.Employees.hints.FirstName.tooltip}" id="ot5"/>
+                                <af:outputText value="#{row.EmployeeId}"
+                                               shortDesc="#{bindings.Employees.hints.EmployeeId.tooltip}" id="ot4">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Employees.hints.EmployeeId.format}"/>
+                                </af:outputText>
+                                <af:outputText value="#{row.Email}"
+                                               shortDesc="#{bindings.Employees.hints.Email.tooltip}" id="ot3"/>
+                            </af:iterator>
+                        </af:panelBox>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

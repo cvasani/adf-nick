@@ -7,7 +7,7 @@
     </data-control-scope>
     <managed-bean id="__1">
       <managed-bean-name>QueryListner</managed-bean-name>
-      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.QueryListner</managed-bean-class>
+      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.QueryListner</managed-bean-class>
       <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <view id="QueryListnerView">

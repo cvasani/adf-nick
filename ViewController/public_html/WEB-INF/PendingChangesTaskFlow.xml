@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
-  <task-flow-definition id="LongRunningTaskFlow">
-    <default-activity>LongRunningTaskViewActivity</default-activity>
+  <task-flow-definition id="PendingChangesTaskFlow">
+    <default-activity>PendingChangesViewActivity</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
     <managed-bean id="__1">
-      <managed-bean-name>LongRunningTask</managed-bean-name>
-      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.LongRunningTaskBean</managed-bean-class>
+      <managed-bean-name>CommonActionsBean</managed-bean-name>
+      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.actions.CommonActions</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
-    <view id="LongRunningTaskViewActivity">
-      <page>/LongRunningTaskPage.jsf</page>
+    <view id="PendingChangesViewActivity">
+      <page>/PendingChangesPage.jsf</page>
     </view>
     <visibility>
       <url-invoke-allowed/>

@@ -7,7 +7,7 @@
     </data-control-scope>
     <managed-bean id="__1">
       <managed-bean-name>TableSelectionBean</managed-bean-name>
-      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.TableSelectionBean</managed-bean-class>
+      <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.TableSelectionBean</managed-bean-class>
       <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <view id="tablelistner">

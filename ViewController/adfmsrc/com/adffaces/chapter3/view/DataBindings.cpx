@@ -28,6 +28,8 @@
     <page path="/SelectManyShuttleView.jspx" usageId="com_adffaces_chapter3_view_SelectManyShuttleViewPageDef"/>
     <page path="/tablelistner.jsf" usageId="com_adffaces_chapter3_view_tablelistnerPageDef"/>
     <page path="/QueryListnerPage.jsf" usageId="com_adffaces_chapter3_view_QueryListnerPagePageDef"/>
+    <page path="/PendingChangesPage.jsf" usageId="com_adffaces_chapter3_view_PendingChangesPagePageDef"/>
+    <page path="/CollectionPaginationPage.jsf" usageId="com_adffaces_chapter3_view_CollectionPaginationPagePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_adffaces_chapter3_view_singleEmployeePageDef"
@@ -61,6 +63,10 @@
           path="com.adffaces.chapter3.view.pageDefs.tablelistnerPageDef"/>
     <page id="com_adffaces_chapter3_view_QueryListnerPagePageDef"
           path="com.adffaces.chapter3.view.pageDefs.QueryListnerPagePageDef"/>
+    <page id="com_adffaces_chapter3_view_PendingChangesPagePageDef"
+          path="com.adffaces.chapter3.view.pageDefs.PendingChangesPagePageDef"/>
+    <page id="com_adffaces_chapter3_view_CollectionPaginationPagePageDef"
+          path="com.adffaces.chapter3.view.pageDefs.CollectionPaginationPagePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="HrAppModuleOldDataControl" Package="com.adffaces.chapter3.model.services"

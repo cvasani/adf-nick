@@ -47,7 +47,7 @@ public class ADFUtils {
      * @return ApplicationModule
      */
     public static ApplicationModule getApplicationModuleForDataControl(String name) {
-        return (ApplicationModule)JSFUtils.resolveExpression("#{data." + name + ".dataProvider}");
+        return (ApplicationModule) JSFUtils.resolveExpression("#{data." + name + ".dataProvider}");
     }
 
     /**
@@ -78,7 +78,7 @@ public class ADFUtils {
      */
     public static Object getPageDefParameterValue(String pageDefName, String parameterName) {
         BindingContainer bindings = findBindingContainer(pageDefName);
-        DCParameter param = ((DCBindingContainer)bindings).findParameter(parameterName);
+        DCParameter param = ((DCBindingContainer) bindings).findParameter(parameterName);
         return param.getValue();
     }
 
@@ -95,7 +95,7 @@ public class ADFUtils {
             if (bindingContainer != null) {
                 ControlBinding ctrlBinding = bindingContainer.getControlBinding(attributeName);
                 if (ctrlBinding instanceof AttributeBinding) {
-                    return (AttributeBinding)ctrlBinding;
+                    return (AttributeBinding) ctrlBinding;
                 }
             }
         }
@@ -118,7 +118,7 @@ public class ADFUtils {
      * @return the current page's binding container
      */
     public static BindingContainer getBindingContainer() {
-        return (BindingContainer)JSFUtils.resolveExpression("#{bindings}");
+        return (BindingContainer) JSFUtils.resolveExpression("#{bindings}");
     }
 
     /**
@@ -126,7 +126,7 @@ public class ADFUtils {
      * @return current binding container as a DCBindingContainer
      */
     public static DCBindingContainer getDCBindingContainer() {
-        return (DCBindingContainer)getBindingContainer();
+        return (DCBindingContainer) getBindingContainer();
     }
 
     /**
@@ -254,7 +254,7 @@ public class ADFUtils {
      * @return
      */
     public static DCIteratorBinding findIterator(String bindingContainer, String iterator) {
-        DCBindingContainer bindings = (DCBindingContainer)JSFUtils.resolveExpression("#{" + bindingContainer + "}");
+        DCBindingContainer bindings = (DCBindingContainer) JSFUtils.resolveExpression("#{" + bindingContainer + "}");
         if (bindings == null) {
             throw new RuntimeException("Binding container '" + bindingContainer + "' not found");
         }
@@ -270,7 +270,7 @@ public class ADFUtils {
      * @return
      */
     public static JUCtrlValueBinding findCtrlBinding(String name) {
-        JUCtrlValueBinding rowBinding = (JUCtrlValueBinding)getDCBindingContainer().findCtrlBinding(name);
+        JUCtrlValueBinding rowBinding = (JUCtrlValueBinding) getDCBindingContainer().findCtrlBinding(name);
         if (rowBinding == null) {
             throw new RuntimeException("CtrlBinding " + name + "' not found");
         }
@@ -299,7 +299,7 @@ public class ADFUtils {
      * @return operation binding
      */
     public static OperationBinding findOperation(String bindingContianer, String opName) {
-        DCBindingContainer bindings = (DCBindingContainer)JSFUtils.resolveExpression("#{" + bindingContianer + "}");
+        DCBindingContainer bindings = (DCBindingContainer) JSFUtils.resolveExpression("#{" + bindingContianer + "}");
         if (bindings == null) {
             throw new RuntimeException("Binding container '" + bindingContianer + "' not found");
         }
@@ -326,8 +326,8 @@ public class ADFUtils {
                                                           String displayAttrName, String descriptionAttrName) {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
         for (Row r : iter.getAllRowsInRange()) {
-            selectItems.add(new SelectItem(r.getAttribute(valueAttrName), (String)r.getAttribute(displayAttrName),
-                                           (String)r.getAttribute(descriptionAttrName)));
+            selectItems.add(new SelectItem(r.getAttribute(valueAttrName), (String) r.getAttribute(displayAttrName),
+                                           (String) r.getAttribute(descriptionAttrName)));
         }
         return selectItems;
     }
@@ -347,7 +347,7 @@ public class ADFUtils {
                                                           String displayAttrName) {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
         for (Row r : iter.getAllRowsInRange()) {
-            selectItems.add(new SelectItem(r.getAttribute(valueAttrName), (String)r.getAttribute(displayAttrName)));
+            selectItems.add(new SelectItem(r.getAttribute(valueAttrName), (String) r.getAttribute(displayAttrName)));
         }
         return selectItems;
     }
@@ -394,8 +394,8 @@ public class ADFUtils {
                                                                String descriptionAttrName) {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
         for (Row r : iter.getAllRowsInRange()) {
-            selectItems.add(new SelectItem(r.getKey(), (String)r.getAttribute(displayAttrName),
-                                           (String)r.getAttribute(descriptionAttrName)));
+            selectItems.add(new SelectItem(r.getKey(), (String) r.getAttribute(displayAttrName),
+                                           (String) r.getAttribute(descriptionAttrName)));
         }
         return selectItems;
     }
@@ -412,7 +412,7 @@ public class ADFUtils {
     public static List<SelectItem> selectItemsByKeyForIterator(DCIteratorBinding iter, String displayAttrName) {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
         for (Row r : iter.getAllRowsInRange()) {
-            selectItems.add(new SelectItem(r.getKey(), (String)r.getAttribute(displayAttrName)));
+            selectItems.add(new SelectItem(r.getKey(), (String) r.getAttribute(displayAttrName)));
         }
         return selectItems;
     }
@@ -469,7 +469,7 @@ public class ADFUtils {
 
     /**
      * Recipe: Determining whether the current transaction has pending changes.
-     * 
+     *
      * Determines whether there are changes done to the current record.
      *
      * @return true/false whether there are uncommited changes.
@@ -504,23 +504,26 @@ public class ADFUtils {
     public static void showPopup(String popupId) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExtendedRenderKitService service = Service.getRenderKitService(facesContext, ExtendedRenderKitService.class);
-        service.addScript(facesContext, "AdfPage.PAGE.findComponentByAbsoluteId('generic:" + popupId + "').show();");
+        //        service.addScript(facesContext, "AdfPage.PAGE.findComponentByAbsoluteId('generic:" + popupId + "').show();");
+        service.addScript(facesContext, "AdfPage.PAGE.findComponentByAbsoluteId('generic" + popupId + "').show();");
     }
 
     /**
      * Recipe: Determining whether the current transaction has pending changes.
-     * 
+     *
      * @return true/false whether there are pending changes in the BC.
      */
     public static boolean isBCTransactionDirty() {
         // get application module and check for dirty transaction
-        ApplicationModule am = ADFUtils.getDCBindingContainer().getDataControl().getApplicationModule();
+        ApplicationModule am = ADFUtils.getDCBindingContainer()
+                                       .getDataControl()
+                                       .getApplicationModule();
         return am.getTransaction().isDirty();
     }
 
     /**
      * Recipe: Determining whether the current transaction has pending changes.
-     * 
+     *
      * @return true/false whether there are pending changes in the controller.
      */
     public static boolean isControllerTransactionDirty() {

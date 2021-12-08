@@ -1,4 +1,4 @@
-package com.packt.jdeveloper.cookbook.shared.view;
+package com.packt.jdeveloper.cookbook.shared.view.beans;
 
 import javax.faces.event.ActionEvent;
 
