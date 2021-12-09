@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="login.jspx" id="d1">
+            <af:form id="f1">
+                <af:panelBox id="ps1" text="PanelBox1">
+                    <h:inputText id="it2" value="#{AuthenticationBean.username}"/>
+                    <h:inputText id="it1" value="#{AuthenticationBean.password}"/>
+                    <f:facet name="toolbar"/>
+                    <af:button text="Login" id="b1" action="#{AuthenticationBean.login}"/>
+                </af:panelBox>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

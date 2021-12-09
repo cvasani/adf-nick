@@ -27,6 +27,7 @@ import java.sql.Types;
 import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewCriteria;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.ViewLinkImpl;
@@ -252,6 +253,24 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         employees.executeEmptyRowSet();
     }
 
+
+    //    Exporting the data
+    public String exportEmployees() {
+        EmployeesImpl employees = this.getEmployees();
+        employees.executeQuery();
+        StringBuilder employeeStringBuilder = new StringBuilder();
+        RowSetIterator iterator = employees.createRowSetIterator(null);
+        iterator.reset();
+        while (iterator.hasNext()) {
+            EmployeesRowImpl employee = (EmployeesRowImpl) iterator.next();
+            employeeStringBuilder.append(employee.getLastName() + " " + employee.getFirstName());
+            if (iterator.hasNext()) {
+                employeeStringBuilder.append(",");
+            }
+        }
+        iterator.closeRowSetIterator();
+        return employeeStringBuilder.toString();
+    }
 
 }
 

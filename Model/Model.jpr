@@ -81,6 +81,17 @@
    <value n="jbo.JpxName" v="com.adffaces.chapter3.model.Model"/>
    <value n="jbo.NoAttrEnumClasses" v="true"/>
    <value n="JboProject" v="true"/>
+   <hash n="oracle.ide.model.DependencyConfiguration">
+      <list n="dependencyList">
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="../Chapter03.jws"/>
+               <url n="sourceURL" path="Model.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+      </list>
+   </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADFbc"/>
@@ -311,6 +322,12 @@
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
          </hash>
+         <hash n="forconsolelogging">
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-Djbo.debugoutput=console"/>
+            <value n="name" v="forconsolelogging"/>
+            <value n="targetURL"/>
+         </hash>
          <hash n="forSQL">
             <value n="custom" v="false"/>
             <value n="javaOptions" v="-Djbo.debugoutput=console -Djbo.logging.show.function=true"/>
@@ -321,6 +338,7 @@
       <list n="runConfigurationList">
          <string v="Default"/>
          <string v="forSQL"/>
+         <string v="forconsolelogging"/>
       </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
@@ -385,6 +403,26 @@
             <value n="id" v="BC4J Service Client"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="JUnit 4 Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JDeveloper Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Connection Manager"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/home/cvasani/.jdeveloper/system12.2.1.4.42.190911.2248/o.jdeveloper/portability.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <list n="libraryReferences">
          <hash>
@@ -445,6 +483,26 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Service Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JUnit 4 Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JDeveloper Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Connection Manager"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/home/cvasani/.jdeveloper/system12.2.1.4.42.190911.2248/o.jdeveloper/portability.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

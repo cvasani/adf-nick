@@ -30,6 +30,7 @@
     <page path="/QueryListnerPage.jsf" usageId="com_adffaces_chapter3_view_QueryListnerPagePageDef"/>
     <page path="/PendingChangesPage.jsf" usageId="com_adffaces_chapter3_view_PendingChangesPagePageDef"/>
     <page path="/CollectionPaginationPage.jsf" usageId="com_adffaces_chapter3_view_CollectionPaginationPagePageDef"/>
+    <page path="/applicationSecurity.jspx" usageId="com_adffaces_chapter3_view_applicationSecurityPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_adffaces_chapter3_view_singleEmployeePageDef"
@@ -67,6 +68,8 @@
           path="com.adffaces.chapter3.view.pageDefs.PendingChangesPagePageDef"/>
     <page id="com_adffaces_chapter3_view_CollectionPaginationPagePageDef"
           path="com.adffaces.chapter3.view.pageDefs.CollectionPaginationPagePageDef"/>
+    <page id="com_adffaces_chapter3_view_applicationSecurityPageDef"
+          path="com.adffaces.chapter3.view.pageDefs.applicationSecurityPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="HrAppModuleOldDataControl" Package="com.adffaces.chapter3.model.services"

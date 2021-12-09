@@ -36,4 +36,14 @@
     <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.SelectManyShuttleBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name>AuthenticationBean</managed-bean-name>
+    <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.AuthenticationBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__5">
+    <managed-bean-name>ApplicationSecurityBean</managed-bean-name>
+    <managed-bean-class>com.packt.jdeveloper.cookbook.shared.view.beans.ApplicationSecurityBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

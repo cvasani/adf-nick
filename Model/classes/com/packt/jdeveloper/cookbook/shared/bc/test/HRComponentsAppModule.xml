@@ -117,6 +117,13 @@
         Name="_return_type_"
         Type="void"/>
     </Method>
+    <Method
+      Name="exportEmployees"
+      MethodName="exportEmployees">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
   </ClientInterface>
   <ServiceInterface
     Name="__serviceInterface">

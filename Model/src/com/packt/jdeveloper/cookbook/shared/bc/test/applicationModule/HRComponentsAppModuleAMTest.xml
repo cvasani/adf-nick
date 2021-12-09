@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jtestcase.sourceforge.net/dtd/jtestcase2.xsd">
+   <class name="HRComponentsAppModuleAMTest">
+      <!--adding more method tags-->
+      <method name="testTestSQLProcedure">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testRemoveEmployeeFromCollection">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testSearchEmployeesUsingAdditionalCriteria">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testGetUserAuthorityLevel">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testGetUserPrincipalName">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testGetApplicationModulePoolStatistics2">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testAdjustCommission">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testPrepare">
+         <!--adding zero or more test-case tags-->
+      </method>
+      <method name="testResetEmployees">
+         <!--adding zero or more test-case tags-->
+      </method>
+   </class>
+</tests>

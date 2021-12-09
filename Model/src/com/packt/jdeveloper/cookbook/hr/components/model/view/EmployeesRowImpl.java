@@ -4,6 +4,7 @@ import com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl;
 
 import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtViewRowImpl;
 
+import oracle.adf.share.ADFContext;
 import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.AttributeList;
@@ -26,6 +27,17 @@ public class EmployeesRowImpl extends ExtViewRowImpl {
     private static final ADFLogger LOGGER =
         ADFLogger.createADFLogger(EmployeesRowImpl.class);
     private static final int SALES_DEPARTMENT_ID = 80;
+
+    @Override
+    public boolean isAttributeUpdateable(int i) {
+        // TODO Implement this method
+        // allow employee changes only if the user has the
+        // 'AllowEmployeeChanges' role
+        return ADFContext.getCurrent().getSecurityContext().isUserInRole("AllowEmployeeChanges")
+        ? super.isAttributeUpdateable(i) : false;
+        
+//        return super.isAttributeUpdateable(i);
+    }
     private static final double DEFAULT_COMMISSION = 0.10;
 
     @Override
