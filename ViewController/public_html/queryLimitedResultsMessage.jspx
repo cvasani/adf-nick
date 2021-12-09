@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="queryLimitedResultsMessage.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow height="100%" id="gr1">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1"
+                                     >
+                            <!-- Content -->
+                            <af:panelBox text="PanelBox1" id="pb1">
+                                <f:facet name="toolbar"/>
+                                <af:table value="#{bindings.Departments.collectionModel}" var="row"
+                                          rows="#{bindings.Departments.rangeSize}"
+                                          emptyText="#{bindings.Departments.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0" fetchSize="#{bindings.Departments.rangeSize}" id="t1">
+                                    <af:column headerText="#{bindings.Departments.hints.DepartmentId.label}" id="c1">
+                                        <af:outputText value="#{row.DepartmentId}"
+                                                       shortDesc="#{bindings.Departments.hints.DepartmentId.tooltip}"
+                                                       id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.Departments.hints.DepartmentId.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.Departments.hints.DepartmentName.label}" id="c2">
+                                        <af:outputText value="#{row.DepartmentName}"
+                                                       shortDesc="#{bindings.Departments.hints.DepartmentName.tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.Departments.hints.ManagerId.label}" id="c3">
+                                        <af:outputText value="#{row.ManagerId}"
+                                                       shortDesc="#{bindings.Departments.hints.ManagerId.tooltip}"
+                                                       id="ot3">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.Departments.hints.ManagerId.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.Departments.hints.LocationId.label}" id="c4">
+                                        <af:outputText value="#{row.LocationId}"
+                                                       shortDesc="#{bindings.Departments.hints.LocationId.tooltip}"
+                                                       id="ot4">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.Departments.hints.LocationId.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.Departments.hints.IsNewRow.label}" id="c5">
+                                        <af:outputText value="#{row.IsNewRow}"
+                                                       shortDesc="#{bindings.Departments.hints.IsNewRow.tooltip}"
+                                                       id="ot5"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelBox>
+                            <af:outputText  id="ot6" value="#{queryLimitedResultsMessageBean.queryLimitedResultsMessage}" visible="#{bindings.DepartmentsIterator.currentRow != null}"
+                                           partialTriggers="t1"/>
+            
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:queryLimitedResultsMessageBean-->
+</jsp:root>

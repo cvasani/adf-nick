@@ -16,7 +16,8 @@
   PageIterMode="Full"
   RowClass="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsRowImpl"
   AccessMode="DEFAULT"
-  ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsImpl">
+  ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsImpl"
+  ComponentInterface="com.packt.jdeveloper.cookbook.hr.components.model.view.common.Departments">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -70,4 +71,14 @@
     ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpDeptFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="queryLimitedResultsMessage"
+      MethodName="queryLimitedResultsMessage">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
 </ViewObject>

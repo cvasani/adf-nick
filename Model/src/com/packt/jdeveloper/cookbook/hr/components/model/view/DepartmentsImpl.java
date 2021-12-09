@@ -1,5 +1,6 @@
 package com.packt.jdeveloper.cookbook.hr.components.model.view;
 
+import com.packt.jdeveloper.cookbook.hr.components.model.view.common.Departments;
 import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtViewObjectImpl;
 
 import oracle.jbo.server.ViewObjectImpl;
@@ -9,11 +10,17 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class DepartmentsImpl extends ExtViewObjectImpl {
+public class DepartmentsImpl extends ExtViewObjectImpl implements Departments {
     /**
      * This is the default constructor (do not remove).
      */
     public DepartmentsImpl() {
+    }
+
+    @Override
+    public String queryLimitedResultsMessage() {
+        // TODO Implement this method
+        return super.queryLimitedResultsMessage();
     }
 }
 

@@ -1,5 +1,7 @@
 package com.packt.jdeveloper.cookbook.shared.bc.extensions;
 
+import com.packt.jdeveloper.cookbook.shared.bc.exceptions.messages.BundleUtils;
+
 import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.AttributeDef;
@@ -28,9 +30,27 @@ public class ExtViewObjectImpl extends ViewObjectImpl {
     private Key currentRowKeyBeforeRollback = null;
     private int rangeStartBeforeRollback = 0;
     private int rangePosOfCurrentRowBeforeRollback = 0;
+    private String QUERY_LIMIT = "QueryLimit";
+    private Boolean queryLimitApplied = false;
 
     public ExtViewObjectImpl(String string, ViewDefImpl viewDefImpl) {
         super(string, viewDefImpl);
+    }
+
+    @Override
+    protected String buildQuery(int i, boolean b) {
+        // TODO Implement this method
+        // get the View object query from the framework
+        String qryString = super.buildQuery(i, b);
+        // check for query limit
+        if (hasQueryLimit()) {
+        // limit the View object query based on the
+        // query limit defined
+        String qryStringLimited = "SELECT * FROM (" + qryString
+        + " ) WHERE ROWNUM <= " + getQueryLimit();
+        qryString = qryStringLimited;
+        }
+        return qryString;
     }
 
     public ExtViewObjectImpl() {
@@ -376,4 +396,44 @@ public class ExtViewObjectImpl extends ViewObjectImpl {
     System.out.println("getAllViewCriterias");
     }
 
+
+    private boolean hasQueryLimit() {
+    // return true if the View object query has a limit
+    return this.getProperty(QUERY_LIMIT) != null;
+    }
+    private long getQueryLimit() {
+    long queryLimit = -1;
+    // check for query limit
+    if (hasQueryLimit() && this.getEstimatedRowCount() > getQueryLimit()) {
+    // retrieve the query limit
+    this.queryLimitApplied = true;
+    queryLimit = new Long((String)this.getProperty(QUERY_LIMIT));
+    }
+    else {
+            this.queryLimitApplied = false;
+        }
+    // return the query limit
+    return queryLimit;
+    }
+    
+    private void setQueryLimitApplied(Boolean queryLimitApplied) {
+    this.queryLimitApplied = queryLimitApplied;
+    }
+    private Boolean isQueryLimitApplied() {
+    return this.queryLimitApplied;
+    }
+    
+    public String queryLimitedResultsMessage() {
+    String limitedResultsError = null;
+    // check for query limit having been applied
+    if (isQueryLimitApplied()) {
+    // return a message indicating that the
+    // query was limited
+    limitedResultsError =
+    BundleUtils.loadMessage("00008", new String[] {
+    String.valueOf(this.getQueryLimit()) });
+    }
+    return limitedResultsError;
+    }
+    
 }
