@@ -1,6 +1,6 @@
 package com.packt.jdeveloper.cookbook.shared.view.beans;
 
-import com.packt.jdeveloper.cookbook.shared.bc.test.UserInfoAppModuleImpl;
+import com.packt.jdeveloper.cookbook.alltest.test.UserInfoAppModuleImpl;
 
 import com.packt.jdeveloper.cookbook.shared.view.util.ADFUtils;
 

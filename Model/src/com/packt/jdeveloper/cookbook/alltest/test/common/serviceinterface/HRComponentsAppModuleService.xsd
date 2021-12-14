@@ -1,0 +1,16 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/com/packt/jdeveloper/cookbook/shared/bc/test/common/types/"
+     xmlns:tns="/com/packt/jdeveloper/cookbook/shared/bc/test/common/types/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <element name="adjustCommission">
+        <complexType>
+            <sequence>
+                <element name="commissionPctAdjustment" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="adjustCommissionResponse">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+</schema>

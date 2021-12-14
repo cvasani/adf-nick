@@ -14,6 +14,8 @@ import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.model.binding.DCParameter;
 import oracle.adf.share.logging.ADFLogger;
 
+import oracle.adf.view.rich.model.QueryDescriptor;
+
 import oracle.binding.AttributeBinding;
 import oracle.binding.BindingContainer;
 import oracle.binding.ControlBinding;
@@ -22,7 +24,10 @@ import oracle.binding.OperationBinding;
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.Key;
 import oracle.jbo.Row;
+import oracle.jbo.ViewCriteria;
 import oracle.jbo.uicli.binding.JUCtrlValueBinding;
+
+import oracle.jbo.uicli.binding.JUSearchBindingCustomizer;
 
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
 import org.apache.myfaces.trinidad.util.Service;
@@ -532,5 +537,18 @@ public class ADFUtils {
         String currentDataControlFrame = bc.getCurrentDataControlFrame();
         return bc.findDataControlFrame(currentDataControlFrame).isTransactionDirty();
     }
+    
+    
+    /**  
+       * Gets ViewCriteria used by the QueryModel  
+       * https://www.jobinesh.com/2013/03/a-utility-method-to-print-viewcriteria.html
+       * good blog for queryEvent and Parsing it 
+       */  
+      private ViewCriteria getViewCriteria(DCBindingContainer bc, QueryDescriptor qd) {  
+        //EmployeesViewCriteriaQuery is the search binding name used in page def file  
+        Object execBinding = bc.findExecutableBinding("EmployeesViewCriteriaQuery");  
+        ViewCriteria vc = JUSearchBindingCustomizer.getViewCriteria((DCBindingContainer)execBinding, qd.getName());  
+        return vc;  
+      }  
 
 }

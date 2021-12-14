@@ -2,6 +2,9 @@ package com.packt.jdeveloper.cookbook.shared.bc.extensions;
 
 import com.packt.jdeveloper.cookbook.shared.bc.exceptions.messages.BundleUtils;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.AttributeDef;
@@ -15,6 +18,7 @@ import oracle.jbo.ViewCriteria;
 import oracle.jbo.ViewCriteriaComponent;
 import oracle.jbo.ViewCriteriaRow;
 import oracle.jbo.ViewObject;
+import oracle.jbo.server.QueryCollection;
 import oracle.jbo.server.TransactionEvent;
 import oracle.jbo.server.ViewAttributeDefImpl;
 import oracle.jbo.server.ViewDefImpl;
@@ -434,6 +438,18 @@ public class ExtViewObjectImpl extends ViewObjectImpl {
     String.valueOf(this.getQueryLimit()) });
     }
     return limitedResultsError;
+    }
+    
+//    GEtting the Query of a SQL run by any PVO
+    @Override
+    protected void bindParametersForCollection(QueryCollection qc,
+                                               Object[] params,
+                                               PreparedStatement stmt) throws SQLException {
+        super.bindParametersForCollection(qc, params, stmt);
+        if (qc != null) {
+            System.out.println("#==[Executing VO "+getName()+"]==#");
+            System.out.println(getQuery());
+        }
     }
     
 }

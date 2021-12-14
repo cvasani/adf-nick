@@ -10,9 +10,11 @@
   DBObjectName="DEPARTMENTS"
   AliasName="Departments"
   BindingStyle="OracleName"
-  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentImpl">
+  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentImpl"
+  DefClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentDefImpl"
+  CollClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentCollImpl">
   <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Delete|Access"/>
+    <Attr Name="_codeGenFlag2" Value="Delete|Access|Def|Coll"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Attribute

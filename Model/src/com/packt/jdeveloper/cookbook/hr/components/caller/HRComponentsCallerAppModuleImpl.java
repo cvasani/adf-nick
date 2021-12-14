@@ -1,9 +1,9 @@
 package com.packt.jdeveloper.cookbook.hr.components.caller;
 
 
-import com.packt.jdeveloper.cookbook.shared.bc.test.common.serviceinterface.HRComponentsAppModuleService;
+import com.packt.jdeveloper.cookbook.alltest.test.common.serviceinterface.HRComponentsAppModuleService;
 
-import com.packt.jdeveloper.cookbook.shared.bc.test.server.serviceinterface.HRComponentsAppModuleServiceImpl;
+import com.packt.jdeveloper.cookbook.alltest.test.server.serviceinterface.HRComponentsAppModuleServiceImpl;
 
 import java.math.BigDecimal;
 

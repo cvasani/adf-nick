@@ -16,13 +16,13 @@
       <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"/>
     </AppModuleConfig>
   </AppModuleConfigBag>
-  <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule">
+  <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule">
     <AppModuleConfig name="HRComponentsAppModuleLocal" jbo.project="com.adffaces.chapter3.model.Model"
-                     ApplicationName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule"
+                     ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"
                      JDBCName="FacesHr" DeployPlatform="LOCAL"
                      TransactionFactory="com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtDatabaseTransactionFactory">
       <Database jbo.TypeMapEntries="OracleApps"/>
-      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModule"/>
+      <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"/>
     </AppModuleConfig>
   </AppModuleConfigBag>
 </BC4JConfig>

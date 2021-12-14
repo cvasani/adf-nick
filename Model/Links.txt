@@ -1,0 +1,4 @@
+HDL : https://otube.oracle.com/playlist/dedicated/154812112/1_6kcjjsmn/1_olqc5t34 
+HDL Debugging : https://confluence.oraclecorp.com/confluence/display/~ramesh.pinjala@oracle.com/Debugging+Salary+HDL
+Selected in Query for Attribute  can be false for performance improvement : https://youtu.be/8E-ITwT0LOs?t=214
+Shay Jdev Videos : https://www.youtube.com/user/ShayJDev/search?query=adf

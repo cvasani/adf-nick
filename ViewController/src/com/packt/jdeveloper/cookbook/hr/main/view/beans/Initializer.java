@@ -1,7 +1,7 @@
 package com.packt.jdeveloper.cookbook.hr.main.view.beans;
 
-import com.packt.jdeveloper.cookbook.shared.bc.test.HRComponentsAppModuleImpl;
-import com.packt.jdeveloper.cookbook.shared.bc.test.common.HRComponentsAppModule;
+import com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModuleImpl;
+import com.packt.jdeveloper.cookbook.alltest.test.common.HRComponentsAppModule;
 import com.packt.jdeveloper.cookbook.shared.view.taskflows.TaskFlowBaseBean;
 import com.packt.jdeveloper.cookbook.shared.view.util.ADFUtils;
 
