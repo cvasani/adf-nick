@@ -8,4 +8,13 @@
          <Custom ns0:tester_classloader_enabled="true" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
       </AppModuleConfig>
    </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule">
+      <AppModuleConfig name="17DB82B34CA" DeployPlatform="LOCAL" JDBCName="FacesHr" BC4JConfigName="HRComponentsAppModuleJDBCLocal" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule" jbo.project="com.adffaces.chapter3.model.Model">
+         <AM-Pooling jbo.doconnectionpooling="true" jbo.ampool.dynamicjdbccredentials="false"/>
+         <Database jbo.server.internal_connection="jdbc:oracle:thin:hr/hr@192.168.0.166:1521:xe" jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"/>
+         <Tester FullProxyInterfaceName="com.packt.jdeveloper.cookbook.alltest.test.common.HRComponentsAppModule"/>
+         <Custom ns0:LastUsedConfiguration="HRComponentsAppModuleJDBCLocal" ns0:tester_classloader_enabled="true" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
 </BC4JConfig>

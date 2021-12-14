@@ -20,7 +20,7 @@ public class TestClient_vo_Queries {
         String config = "HrAppModuleLocal";
         ApplicationModule am =
         Configuration.createRootApplicationModule("com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule",
-                                                  "HrAppModuleLocal");
+                                                  "HRComponentsAppModuleJDBCLocal");
         // Work with your appmodule and view object here
         //Find Department View Object Instance
         DepartmentsImpl vo = (DepartmentsImpl)am.findViewObject("Departments");

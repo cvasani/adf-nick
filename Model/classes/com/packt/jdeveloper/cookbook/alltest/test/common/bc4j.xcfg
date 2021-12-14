@@ -1,6 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
+<!---->
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
-   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule">
+   <AppModuleConfigBag ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"
+                       default="HRComponentsAppModuleJDBCLocal">
       <AppModuleConfig name="HrAppModuleLocal" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory"
                        ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule" jbo.project="com.adffaces.chapter3.model.Model">
          <Database jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/FacesHrDS" jbo.TypeMapEntries="OracleApps"/>
@@ -16,6 +18,13 @@
                        ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule" DeployPlatform="SI">
          <AM-Pooling jbo.ampool.resetnontransactionalstate="true"/>
          <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/FacesHrDS"/>
+         <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="HRComponentsAppModuleJDBCLocal" jbo.project="com.adffaces.chapter3.model.Model"
+                       ApplicationName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.doconnectionpooling="true" jbo.ampool.dynamicjdbccredentials="false"/>
+         <Database jbo.TypeMapEntries="OracleApps"
+                   jbo.server.internal_connection="jdbc:oracle:thin:hr/hr@192.168.0.166:1521:xe"/>
          <Security AppModuleJndiName="com.packt.jdeveloper.cookbook.alltest.test.HRComponentsAppModule"/>
       </AppModuleConfig>
    </AppModuleConfigBag>
