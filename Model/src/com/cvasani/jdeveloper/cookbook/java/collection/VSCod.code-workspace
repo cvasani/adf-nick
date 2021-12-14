@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../.."
+		}
+	],
+	"remoteAuthority": "wsl+ubunturough",
+	"settings": {
+		"files.watcherExclude": {
+			"**/target": true
+		}
+	}
+}
