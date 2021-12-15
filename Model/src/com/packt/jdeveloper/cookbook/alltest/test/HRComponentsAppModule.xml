@@ -34,6 +34,9 @@
   <ViewUsage
     Name="ApplicationModulePoolStatistics"
     ViewObjectName="com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatistics"/>
+  <ViewUsage
+    Name="EmployeeVO1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeVO"/>
   <ViewLinkUsage
     Name="EmpManagerFkLink1"
     ViewLinkObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"
@@ -43,7 +46,7 @@
   <Remote
     Name="ServiceInterface"
     ServerClassName="com.packt.jdeveloper.cookbook.alltest.test.server.serviceinterface.HRComponentsAppModuleServiceImpl"
-    ServerInterfaceName="com.packt.jdeveloper.cookbook.shared.bc.test.common.serviceinterface.HRComponentsAppModuleService">
+    ServerInterfaceName="com.packt.jdeveloper.cookbook.alltest.test.common.serviceinterface.HRComponentsAppModuleService">
     <DesignTime>
       <Attr Name="_webServiceName" Value="HRComponentsAppModuleService"/>
       <Attr Name="_targetNameSpace" Value="/com/packt/jdeveloper/cookbook/shared/bc/test/common/"/>

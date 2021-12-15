@@ -26,5 +26,6 @@ public interface HRComponentsAppModule extends ApplicationModule {
     void resetEmployees();
 
     String exportEmployees();
+
 }
 

@@ -196,8 +196,20 @@
     ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpDeptFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmployeeVO"
+    ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.EmpDeptFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ClientInterface
     Name="__clientInterface">
+    <Method
+      Name="queryLimitedResultsMessage"
+      MethodName="queryLimitedResultsMessage">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
     <Method
       Name="queryLimitedResultsMessage"
       MethodName="queryLimitedResultsMessage">

@@ -40,7 +40,9 @@ public class DepartmentImpl extends EntityImpl {
         IsNewRow,
         DepartmentManager,
         DepartmentEmployees,
-        Employee;
+        Employee,
+        EmployeeEO,
+        EmployeeEO1;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -74,6 +76,8 @@ public class DepartmentImpl extends EntityImpl {
     public static final int DEPARTMENTMANAGER = AttributesEnum.DepartmentManager.index();
     public static final int DEPARTMENTEMPLOYEES = AttributesEnum.DepartmentEmployees.index();
     public static final int EMPLOYEE = AttributesEnum.Employee.index();
+    public static final int EMPLOYEEEO = AttributesEnum.EmployeeEO.index();
+    public static final int EMPLOYEEEO1 = AttributesEnum.EmployeeEO1.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -192,10 +196,24 @@ public class DepartmentImpl extends EntityImpl {
 
 
     /**
+     * @return the associated entity EmployeeEOImpl.
+     */
+    public EmployeeEOImpl getEmployeeEO() {
+        return (EmployeeEOImpl) getAttributeInternal(EMPLOYEEEO);
+    }
+
+    /**
+     * Sets <code>value</code> as the associated entity EmployeeEOImpl.
+     */
+    public void setEmployeeEO(EmployeeEOImpl value) {
+        setAttributeInternal(EMPLOYEEEO, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
-    public RowIterator getEmployee() {
-        return (RowIterator) getAttributeInternal(EMPLOYEE);
+    public RowIterator getEmployeeEO1() {
+        return (RowIterator) getAttributeInternal(EMPLOYEEEO1);
     }
 
 
@@ -207,6 +225,14 @@ public class DepartmentImpl extends EntityImpl {
     public static Key createPrimaryKey(Number departmentId) {
         return new Key(new Object[] { departmentId });
     }
+
+    /**
+     * @return the associated entity oracle.jbo.RowIterator.
+     */
+    public RowIterator getEmployee() {
+        return (RowIterator) getAttributeInternal(EMPLOYEE);
+    }
+
 
     /**
      * Add entity remove logic in this method.

@@ -10,14 +10,14 @@
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <AssociationEnd
-    Name="Department"
+    Name="Department1"
     Cardinality="1"
     Source="true"
     Owner="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
-      <Attr Name="_finderName" Value="Department"/>
+      <Attr Name="_finderName" Value="Department1"/>
       <Attr Name="_foreignKey" Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.DeptIdPk"/>
     </DesignTime>
     <AttrArray Name="Attributes">
@@ -25,17 +25,17 @@
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
-    Name="Employee"
+    Name="EmployeeEO1"
     Cardinality="-1"
-    Owner="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee">
+    Owner="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEO">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
-      <Attr Name="_finderName" Value="Employee"/>
-      <Attr Name="_foreignKey" Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.EmpDeptFk"/>
+      <Attr Name="_finderName" Value="EmployeeEO1"/>
+      <Attr Name="_foreignKey" Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEO.EmpDeptFk"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.DepartmentId"/>
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEO.DepartmentId"/>
     </AttrArray>
   </AssociationEnd>
 </Association>

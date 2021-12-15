@@ -92,6 +92,20 @@
     AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="EmployeeEO"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc.EmployeeEO"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc.Department"
+    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmployeeEO1"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.EmployeeEO1"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="DepartmentsDepartmentIdCheck">
     <DesignTime>

@@ -1,0 +1,41 @@
+=== FIND and Update and commit Rows ===
+    /**
+     * Acsutom method to update departement name
+     * @param departmentId
+     * @param departmentName
+     */
+    public void updateDepartmentName(Integer departmentId, String departmentName) {
+        Key key = new Key(new Object[] { departmentId });
+        DepartmentVORowImpl deptRow =(DepartmentVORowImpl) getDepartments().getRow(key);
+        deptRow.setDepartmentName(departmentName);
+        getTransaction().commit();
+    }
+    
+=== Resource Bundle and String
+
+    /**
+     * Returns localized string from the resource bundle for key : Local to entity
+     * @param key
+     * @return
+     */
+    public String getLocalizedValue(String key) {
+
+        //Access the ResourceBundleDef defined for the entity object
+        ResourceBundleDef resourceDef = this.getResourceBundleDef();
+        //Get the user locale
+        Locale locale = this.getDBTransaction().getSession().getLocale();
+        //Get the localized value for the key
+        String retVal = StringManager.getLocalizedStringFromResourceDef(resourceDef, key, null, locale, null, false);
+        return retVal;
+    }
+// Global Resournce Bundle and get the key
+    public String getStringFromResBundle(String key) {
+        //Get the user locale
+        Locale currentLocale = this.getDBTransaction().getSession().getLocale();
+        ResourceBundle myResources = ResourceBundle.getBundle("MyResources", currentLocale);
+        return myResources.getString(key);
+    }
+    
+===
+
+

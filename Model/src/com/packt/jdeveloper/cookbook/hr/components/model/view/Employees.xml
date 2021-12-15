@@ -268,8 +268,23 @@
     ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.DeptMgrFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmployeeVO"
+    ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ClientInterface
     Name="__clientInterface">
+    <Method
+      Name="adjustCommission"
+      MethodName="adjustCommission">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="commissionPctAdjustment"
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
     <Method
       Name="adjustCommission"
       MethodName="adjustCommission">

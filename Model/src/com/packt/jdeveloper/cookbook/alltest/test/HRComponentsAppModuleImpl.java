@@ -2,6 +2,7 @@ package com.packt.jdeveloper.cookbook.alltest.test;
 
 import com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeCountImpl;
+import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeVOImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeesRowImpl;
 import com.packt.jdeveloper.cookbook.shared.bc.database.SQLProcedure;
@@ -10,6 +11,9 @@ import com.packt.jdeveloper.cookbook.shared.bc.database.SQLProcedure;
 import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtViewObjectImpl;
 import com.packt.jdeveloper.cookbook.alltest.test.common.HRComponentsAppModule;
 
+import com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEODefImpl;
+import com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl;
+import com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance.MarketingBaseEmployeeEOImpl;
 import com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatisticsImpl;
 
 import java.math.BigDecimal;
@@ -22,14 +26,19 @@ import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtApplicationModuleIm
 
 import java.math.BigDecimal;
 
+import java.sql.Timestamp;
 import java.sql.Types;
 
 import oracle.adf.share.logging.ADFLogger;
 
+import oracle.jbo.JboException;
+import oracle.jbo.Key;
+import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewCriteria;
 import oracle.jbo.domain.Number;
+import oracle.jbo.server.EntityDefImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
 
@@ -192,23 +201,16 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         //        new String[] { "EmployeeId", "DepartmentId"});
 
 
-        EmployeesImpl additionalCriteria = this.getEmployees();
-        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(), new String[] { "EmployeeId" });
-
-        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(),
-                                                         new String[] { "EmployeeId", "DepartmentId" });
-
-        additionalCriteria.setViewCriteriaCaseInsensitive(true);
+        //        EmployeesImpl additionalCriteria = this.getEmployees();
+        //        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(), new String[] { "EmployeeId" });
+        //
+        //        additionalCriteria.searchUsingAdditionalCriteria(this.getCascadingLovs(),
+        //                                                         new String[] { "EmployeeId", "DepartmentId" });
+        //
+        //        additionalCriteria.setViewCriteriaCaseInsensitive(true);
 
     }
 
-    /**
-     * Container's getter for CascadingLovsView1.
-     * @return CascadingLovsView1
-     */
-    public ViewObjectImpl getCascadingLovs() {
-        return (ViewObjectImpl) findViewObject("CascadingLovs");
-    }
 
     /**
      * @param commissionPctAdjustment
@@ -272,5 +274,118 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         return employeeStringBuilder.toString();
     }
 
+    /**
+     * Search on employee entities in the hierarchy
+     * Find in inheritance
+     * @param empId
+     * @return
+     */
+    public MarketingBaseEmployeeEOImpl findAllMarketingEmployees(int empId) {
+
+        EntityDefImpl employeeEODef = MarketingBaseEmployeeEOImpl.getDefinitionObject();
+        Key empIdKey = MarketingBaseEmployeeEOImpl.createPrimaryKey(new Integer(empId));
+        return (MarketingBaseEmployeeEOImpl) employeeEODef.findByPKExtended(getDBTransaction(), empIdKey, true);
+    }
+
+    /**
+     * Container's getter for CascadingLovs.
+     * @return CascadingLovs
+     */
+    public ViewObjectImpl getCascadingLovs() {
+        return (ViewObjectImpl) findViewObject("CascadingLovs");
+    }
+
+
+    //    Create row using entityt accecess and internal2 method
+
+    /**
+     * Creates an Employee instance
+     * @return
+     */
+    public EmployeeEOImpl createEmployee() {
+        //Get the EmployeeEODefImpl which is the java repsentstaion of EmployeeEO.xml
+        EmployeeEODefImpl employeeEODefImpl = (EmployeeEODefImpl) EmployeeEOImpl.getDefinitionObject();
+        //Create the entiy instance in the current transaction
+        EmployeeEOImpl newEmployee = (EmployeeEOImpl) employeeEODefImpl.createInstance2(this.getDBTransaction(), null);
+        //EmployeeID is sequence generated which is specified groovy expression, rest is taken care by the framework
+        //Populate the other attributes
+        newEmployee.setFirstName("Jobinesh");
+        newEmployee.setLastName("Purushothaman");
+        newEmployee.setDepartmentId(10);
+        newEmployee.setEmail("JOBINESH@XYZ.COM");
+        newEmployee.setHireDate(new Timestamp(System.currentTimeMillis()));
+        newEmployee.setJobId("IT_PROG");
+        try {
+            //Commit the transaction
+            // getDBTransaction().commit();
+        } catch (JboException ex) {
+            //If commit fails, then roll back the entire transaction
+            getDBTransaction().rollback();
+            throw ex;
+        }
+        return newEmployee;
+    }
+
+    /**
+     * Find employee by PK
+     * @param empId
+     * @return
+     */
+    public EmployeeEOImpl findEmployeeById(int empId) {
+
+        EntityDefImpl employeeEODef = EmployeeEOImpl.getDefinitionObject();
+        Key empIdKey = EmployeeEOImpl.createPrimaryKey(new Integer(empId));
+        return (EmployeeEOImpl) employeeEODef.findByPrimaryKey(getDBTransaction(), empIdKey);
+    }
+
+    /**
+     * Find employee by alt Key - Email : Jbinesh : Page 87
+     * @param email
+     * @return
+     */
+    public EmployeeEOImpl findEmployeeByEmail(String email) {
+        EntityDefImpl employeeEODef = EmployeeEOImpl.getDefinitionObject();
+        Key emailAltKey = new Key(new Object[] { email });
+        return (EmployeeEOImpl) employeeEODef.findByAltKey(getDBTransaction(), "EmailAltKey", emailAltKey, false, true);
+
+    }
+
+    /**
+     * Commits the transaction
+     */
+    public void commit() {
+        try {
+            getDBTransaction().commit();
+        } catch (JboException ex) {
+            getDBTransaction().rollback();
+            throw ex;
+        }
+    }
+
+    /**
+     * Container's getter for EmployeeVO1.
+     * @return EmployeeVO1
+     */
+    public EmployeeVOImpl getEmployeeVO1() {
+        return (EmployeeVOImpl) findViewObject("EmployeeVO1");
+    }
+
+//    //In application module implementation class
+//    public void createOnPolymorphicVO() {
+//        Row row = null;
+//        NameValuePairs nvp = null;
+//        //Get the polymorphic VO
+//        MarketingBaseEmployeeVOViewImpl vo = (MarketingBaseEmployeeVOViewImpl) getMarketingBaseEmployeeEOView1();
+//        nvp = new NameValuePairs();
+//        nvp.setAttribute("DepartmentId", "90");
+//        //VO delegates the createAndInitRow() call to
+//        //SalesEmployeeExEO as DepartmentId=90
+//        row = vo.createAndInitRow(nvp);
+//        nvp = new NameValuePairs();
+//        nvp.setAttribute("DepartmentId", "80");
+//        //Vo delgates the createAndInitRow() call to
+//        //ExecutiveEmployeeExEO as DepartmentId=80
+//        row = vo.createAndInitRow(nvp);
+//    }
 }
 

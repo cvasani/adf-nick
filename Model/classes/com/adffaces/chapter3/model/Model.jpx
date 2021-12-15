@@ -21,6 +21,8 @@
     <Attr Name="_appModuleNames4"
       Value="com.packt.jdeveloper.cookbook.hr.components.model.application.HrSharedComponentsAppModule"/>
     <Attr Name="_appModuleNames5" Value="com.packt.jdeveloper.cookbook.alltest.test.UserInfoAppModule"/>
+    <Attr Name="_domainNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.PropertySet"/>
+    <Attr Name="_propSetNames1" Value="com.packt.jdeveloper.cookbook.shared.bc.properties.PropertySet"/>
   </DesignTime>
   <Containee
     Name="associations"
@@ -63,6 +65,14 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="test"
+    PackageName="com.packt.jdeveloper.cookbook.alltest.test"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="caller"
     PackageName="com.packt.jdeveloper.cookbook.hr.components.caller"
     ObjectType="JboPackage">
@@ -97,6 +107,22 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="inheritance"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="inheritance"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="link"
     PackageName="com.packt.jdeveloper.cookbook.hr.components.model.view.link"
     ObjectType="JboPackage">
@@ -110,6 +136,7 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_VO" Value="true"/>
+      <Attr Name="_VL" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee
@@ -118,14 +145,6 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_DO" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
-    Name="test"
-    PackageName="com.packt.jdeveloper.cookbook.shared.bc.test"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_AM" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee

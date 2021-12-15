@@ -65,6 +65,7 @@ public class EmployeesRowImpl extends ExtViewRowImpl {
         JobId,
         EmployeesView,
         Departments,
+        EmployeeVO,
         DepartmentsLov,
         JobsLov,
         CountriesLov;
@@ -108,6 +109,7 @@ public class EmployeesRowImpl extends ExtViewRowImpl {
     public static final int JOBID = AttributesEnum.JobId.index();
     public static final int EMPLOYEESVIEW = AttributesEnum.EmployeesView.index();
     public static final int DEPARTMENTS = AttributesEnum.Departments.index();
+    public static final int EMPLOYEEVO = AttributesEnum.EmployeeVO.index();
     public static final int DEPARTMENTSLOV = AttributesEnum.DepartmentsLov.index();
     public static final int JOBSLOV = AttributesEnum.JobsLov.index();
     public static final int COUNTRIESLOV = AttributesEnum.CountriesLov.index();
@@ -339,6 +341,13 @@ public class EmployeesRowImpl extends ExtViewRowImpl {
      */
     public RowIterator getDepartments() {
         return (RowIterator) getAttributeInternal(DEPARTMENTS);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link EmployeeVO.
+     */
+    public RowIterator getEmployeeVO() {
+        return (RowIterator) getAttributeInternal(EMPLOYEEVO);
     }
 
     /**

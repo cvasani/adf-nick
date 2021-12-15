@@ -37,7 +37,8 @@ public class DepartmentsRowImpl extends ExtViewRowImpl {
         ManagerId,
         LocationId,
         IsNewRow,
-        Employees;
+        Employees,
+        EmployeeVO;
         private static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -98,6 +99,7 @@ public class DepartmentsRowImpl extends ExtViewRowImpl {
     public static final int LOCATIONID = AttributesEnum.LocationId.index();
     public static final int ISNEWROW = AttributesEnum.IsNewRow.index();
     public static final int EMPLOYEES = AttributesEnum.Employees.index();
+    public static final int EMPLOYEEVO = AttributesEnum.EmployeeVO.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -201,6 +203,13 @@ public class DepartmentsRowImpl extends ExtViewRowImpl {
      */
     public RowIterator getEmployees() {
         return (RowIterator) getAttributeInternal(EMPLOYEES);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link EmployeeVO.
+     */
+    public RowIterator getEmployeeVO() {
+        return (RowIterator) getAttributeInternal(EMPLOYEEVO);
     }
 
 }

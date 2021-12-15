@@ -11,9 +11,11 @@
   AliasName="Employees"
   BindingStyle="OracleName"
   xmlns:validation="http://xmlns.oracle.com/adfm/validation"
-  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl">
+  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl"
+  DefClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeDefImpl"
+  CollClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeCollImpl">
   <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML|Def|Coll"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewAccessor
@@ -188,6 +190,45 @@
     AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Employee"
     Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentImpl"
     IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmployeeEO"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFkAssoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFkAssoc.EmployeeEO"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFkAssoc.Employee"
+    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmployeeEO1"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFk2Assoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFk2Assoc.EmployeeEO1"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpManagerFk2Assoc.Employee1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="DepartmentEO"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc.DepartmentEO"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc.Employee"
+    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentEOImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="DepartmentEO1"
+    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc"
+    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc.DepartmentEO1"
+    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc.Employee1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="EmailAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMPLOYEES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Employee.Email"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="EmpEmailNn">
     <DesignTime>
