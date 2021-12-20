@@ -57,34 +57,6 @@
     Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="DEPARTMENTS"/>
-  <AccessorAttribute
-    Name="Employee"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc.Employee"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk1Assoc.DepartmentEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="EmployeeEO"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk2Assoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk2Assoc.EmployeeEO"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFk2Assoc.DepartmentEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="Employee1"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc.Employee1"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk1Assoc.DepartmentEO1"
-    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="EmployeeEO1"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk2Assoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk2Assoc.EmployeeEO1"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFk2Assoc.DepartmentEO1"
-    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl"
-    IsUpdateable="true"/>
   <Key
     Name="DeptIdPk"
     PrimaryKey="true">

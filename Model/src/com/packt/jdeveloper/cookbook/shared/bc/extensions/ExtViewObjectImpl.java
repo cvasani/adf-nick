@@ -16,6 +16,8 @@ import oracle.jbo.Variable;
 import oracle.jbo.VariableValueManager;
 import oracle.jbo.ViewCriteria;
 import oracle.jbo.ViewCriteriaComponent;
+import oracle.jbo.ViewCriteriaItem;
+import oracle.jbo.ViewCriteriaItemValue;
 import oracle.jbo.ViewCriteriaRow;
 import oracle.jbo.ViewObject;
 import oracle.jbo.server.QueryCollection;
@@ -24,6 +26,7 @@ import oracle.jbo.server.ViewAttributeDefImpl;
 import oracle.jbo.server.ViewDefImpl;
 import oracle.jbo.server.ViewObjectImpl;
 import oracle.jbo.server.ViewRowImpl;
+import oracle.jbo.server.ViewRowSetImpl;
 
 public class ExtViewObjectImpl extends ViewObjectImpl {
 
@@ -48,11 +51,10 @@ public class ExtViewObjectImpl extends ViewObjectImpl {
         String qryString = super.buildQuery(i, b);
         // check for query limit
         if (hasQueryLimit()) {
-        // limit the View object query based on the
-        // query limit defined
-        String qryStringLimited = "SELECT * FROM (" + qryString
-        + " ) WHERE ROWNUM <= " + getQueryLimit();
-        qryString = qryStringLimited;
+            // limit the View object query based on the
+            // query limit defined
+            String qryStringLimited = "SELECT * FROM (" + qryString + " ) WHERE ROWNUM <= " + getQueryLimit();
+            qryString = qryStringLimited;
         }
         return qryString;
     }
@@ -397,59 +399,197 @@ public class ExtViewObjectImpl extends ViewObjectImpl {
                     vc.setUpperColumns(bCaseInsensitive);
             }
         }
-    System.out.println("getAllViewCriterias");
+        System.out.println("getAllViewCriterias");
     }
 
 
     private boolean hasQueryLimit() {
-    // return true if the View object query has a limit
-    return this.getProperty(QUERY_LIMIT) != null;
+        // return true if the View object query has a limit
+        return this.getProperty(QUERY_LIMIT) != null;
     }
+
     private long getQueryLimit() {
-    long queryLimit = -1;
-    // check for query limit
-    if (hasQueryLimit() && this.getEstimatedRowCount() > getQueryLimit()) {
-    // retrieve the query limit
-    this.queryLimitApplied = true;
-    queryLimit = new Long((String)this.getProperty(QUERY_LIMIT));
-    }
-    else {
+        long queryLimit = -1;
+        // check for query limit
+        if (hasQueryLimit() && this.getEstimatedRowCount() > getQueryLimit()) {
+            // retrieve the query limit
+            this.queryLimitApplied = true;
+            queryLimit = new Long((String) this.getProperty(QUERY_LIMIT));
+        } else {
             this.queryLimitApplied = false;
         }
-    // return the query limit
-    return queryLimit;
+        // return the query limit
+        return queryLimit;
     }
-    
+
     private void setQueryLimitApplied(Boolean queryLimitApplied) {
-    this.queryLimitApplied = queryLimitApplied;
+        this.queryLimitApplied = queryLimitApplied;
     }
+
     private Boolean isQueryLimitApplied() {
-    return this.queryLimitApplied;
+        return this.queryLimitApplied;
     }
-    
+
     public String queryLimitedResultsMessage() {
-    String limitedResultsError = null;
-    // check for query limit having been applied
-    if (isQueryLimitApplied()) {
-    // return a message indicating that the
-    // query was limited
-    limitedResultsError =
-    BundleUtils.loadMessage("00008", new String[] {
-    String.valueOf(this.getQueryLimit()) });
+        String limitedResultsError = null;
+        // check for query limit having been applied
+        if (isQueryLimitApplied()) {
+            // return a message indicating that the
+            // query was limited
+            limitedResultsError =
+                BundleUtils.loadMessage("00008", new String[] { String.valueOf(this.getQueryLimit()) });
+        }
+        return limitedResultsError;
     }
-    return limitedResultsError;
-    }
-    
-//    GEtting the Query of a SQL run by any PVO
+
+    //    GEtting the Query of a SQL run by any PVO
     @Override
-    protected void bindParametersForCollection(QueryCollection qc,
-                                               Object[] params,
+    protected void bindParametersForCollection(QueryCollection qc, Object[] params,
                                                PreparedStatement stmt) throws SQLException {
         super.bindParametersForCollection(qc, params, stmt);
         if (qc != null) {
-            System.out.println("#==[Executing VO "+getName()+"]==#");
+            System.out.println("#==[Executing VO " + getName() + "]==#");
             System.out.println(getQuery());
         }
     }
-    
+
+
+    //Method that overrides the current behavior of the rowset creation only tru rows are returned from cache or rowset
+
+    /**
+     *
+     * @param viewRowImpl
+     * @return boolean
+     */
+    @Override
+    protected boolean rowQualifies(ViewRowImpl viewRowImpl) {
+        // TODO Implement this method Proactively Quality row filter always applied for tiven PVO
+        Object attrValue = viewRowImpl.getAttribute("StatusFlag");
+        if (attrValue != null) {
+            if ("DELETE".equals(attrValue))
+                return false;
+            else
+                return true;
+        }
+
+        return super.rowQualifies(viewRowImpl);
+    }
+
+//    //In view object implementation class
+//
+//    /**
+//     *  : Careful this is not made for general use
+//     * getViewCriteriaClause will be invoked for both database
+//     * query and in memory query mode. While overriding
+//     * developer will need to take care of this point.
+//     */
+//    @Override
+//    public String getViewCriteriaClause(boolean forQuery) {
+//        //Identifies the applied view criteria for the current
+//        //execution mode and call setUpperColumns on each VC
+//        ViewCriteria[] vcs =
+//            getApplyViewCriterias(forQuery ? ViewCriteria.CRITERIA_MODE_QUERY : ViewCriteria.CRITERIA_MODE_CACHE);
+//        if (vcs != null && vcs.length > 0) {
+//            for (ViewCriteria vc : vcs) {
+//                if (!vc.isUpperColumns()) {
+//                    vc.setUpperColumns(true);
+//                }
+//            }
+//        }
+//        return super.getViewCriteriaClause(forQuery);
+//    }
+//
+//    //In the view object implementation class
+//
+//    /**
+//     *  : Careful this is not made for general use
+//     * getCriteriaItemClause is invoked for both database query
+//     * and in memory query mode. While overriding developer
+//     * will need to take care of this point.
+//     */
+//    @Override
+//    public String getCriteriaItemClause(ViewCriteriaItem vci) {
+//        // This method generates custom WHERE clause for search
+//        // on DepartmentName to return the matching columns as well
+//        // NULL columns
+//        if (vci.getAttributeDef()
+//               .getName()
+//               .equals("DepartmentName") && vci.getViewCriteria()
+//                                               .getName()
+//                                               .contains("DepartmentVC") &&
+//            hasBindVarValue(vci.getViewCriteria(), "bindVarDeptNames")) {
+//            String attrName = null;
+//            //Handle database query and in-memory query separately
+//            if (vci.getViewCriteria().isCriteriaForQuery()) {
+//                return getItemClauseForDatabaseUse(vci);
+//            } else {
+//                return getItemClauseForInMemoryUse(vci);
+//            }
+//        }
+//        return super.getCriteriaItemClause(vci);
+//    }
+//
+//    /**
+//     * Custom WHERE clause fragment for database query  : Careful this is not made for general use
+//     */
+//    protected String getItemClauseForDatabaseUse(ViewCriteriaItem vci) {
+//        String attrName = this.getEntityDef(0).getAliasName() + ".DEPARTMENT_NAME";
+//        return "((" + attrName + " = :bindVarDeptNames ) OR (" + attrName + " IS NULL))";
+//    }
+//
+//    protected String getItemClauseForInMemoryUse(ViewCriteriaItem vci) {
+//        String attrName = "DepartmentName";
+//        return "((" + attrName + " = :bindVarDeptNames ) OR (" + attrName + " IS NULL))";
+//    }
+//
+//    /**
+//     * Custom WHERE clause fragment for in-memory query
+//     */
+//    private boolean hasBindVarValue(ViewCriteria vc, String varName) {
+//        VariableValueManager varValueMgr = vc.ensureVariableManager();
+//        return varValueMgr.hasVariableValue(varName);
+//    }
+
+////    In view object implementation : Careful this is not made for general use
+//        public void prepareRowSetForQuery(ViewRowSetImpl vrs) {
+//        //Set the value for bind variable ':bindVarDeptId' only
+//        //for default row set
+//        if(vrs.isDefaultRowSet()){
+//        vrs.setNamedWhereClauseParam( "bindVarDeptId", 100);
+//        }
+//        super.prepareRowSetForQuery(vrs);
+//        }
+//
+//
+//    //In view object implementation class : : Careful this is not made for general use
+//    //    This method adds location filter to all the Queries that are getting generated
+//    @Override
+//    public void prepareVOForQuery() {
+//        super.prepareVOForQuery();
+//        //Check if the LOC_CRITERIA is already applied on the VO
+//        //If yes, returns from this method
+//        String[] vcnames = getViewCriteriaManager().getApplyViewCriteriaNames();
+//        if (vcnames != null) {
+//            for (String name : vcnames) {
+//                if (name.equals("LOC_CRITERIA")) {
+//                    return;
+//                }
+//            }
+//        }
+//        // The following code create LOC_CRITERIA
+//        //and applies it to the VO.
+//        //This view criteria hold a condition to read
+//        //department rows from logged-in user's location
+//        ViewCriteria vc = createViewCriteria();
+//        vc.setName("LOC_CRITERIA");
+//        vc.setConjunction(ViewCriteria.VC_CONJ_AND);
+//        ViewCriteriaRow vcr = vc.createViewCriteriaRow();
+//        vc.insertRow(vcr);
+//        ViewCriteriaItem vci = vcr.ensureCriteriaItem("LocationId");
+//        vci.setOperator("=");
+//        ViewCriteriaItemValue vciv = vci.getValues().get(0);
+//        //getLoggedInLocId() returns logged in user's location
+//        vciv.setValue(100);
+//        applyViewCriteria(vc, true);
+//    }
 }

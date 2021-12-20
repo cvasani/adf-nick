@@ -40,8 +40,6 @@ public class DepartmentImpl extends EntityImpl {
         IsNewRow,
         DepartmentManager,
         DepartmentEmployees,
-        Employee,
-        EmployeeEO,
         EmployeeEO1;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -75,8 +73,6 @@ public class DepartmentImpl extends EntityImpl {
     public static final int ISNEWROW = AttributesEnum.IsNewRow.index();
     public static final int DEPARTMENTMANAGER = AttributesEnum.DepartmentManager.index();
     public static final int DEPARTMENTEMPLOYEES = AttributesEnum.DepartmentEmployees.index();
-    public static final int EMPLOYEE = AttributesEnum.Employee.index();
-    public static final int EMPLOYEEEO = AttributesEnum.EmployeeEO.index();
     public static final int EMPLOYEEEO1 = AttributesEnum.EmployeeEO1.index();
 
     /**
@@ -196,28 +192,6 @@ public class DepartmentImpl extends EntityImpl {
 
 
     /**
-     * @return the associated entity EmployeeEOImpl.
-     */
-    public EmployeeEOImpl getEmployeeEO() {
-        return (EmployeeEOImpl) getAttributeInternal(EMPLOYEEEO);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeEOImpl.
-     */
-    public void setEmployeeEO(EmployeeEOImpl value) {
-        setAttributeInternal(EMPLOYEEEO, value);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployeeEO1() {
-        return (RowIterator) getAttributeInternal(EMPLOYEEEO1);
-    }
-
-
-    /**
      * @param departmentId key constituent
 
      * @return a Key object based on given key constituents.
@@ -229,8 +203,8 @@ public class DepartmentImpl extends EntityImpl {
     /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
-    public RowIterator getEmployee() {
-        return (RowIterator) getAttributeInternal(EMPLOYEE);
+    public RowIterator getEmployeeEO1() {
+        return (RowIterator) getAttributeInternal(EMPLOYEEEO1);
     }
 
 

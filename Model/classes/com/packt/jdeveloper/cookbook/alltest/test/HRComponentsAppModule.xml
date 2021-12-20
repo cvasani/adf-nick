@@ -35,8 +35,23 @@
     Name="ApplicationModulePoolStatistics"
     ViewObjectName="com.packt.jdeveloper.cookbook.shared.bc.utilviews.ApplicationModulePoolStatistics"/>
   <ViewUsage
+    Name="MarketingBaseEmployeeVOView1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.delete.MarketingBaseEmployeeVOView"/>
+  <ViewUsage
+    Name="SalesSubEmployeeVOView1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.delete.SalesSubEmployeeVOView"/>
+  <ViewUsage
+    Name="ExecutiveSubEmployeeVOView1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.delete.ExecutiveSubEmployeeVOView"/>
+  <ViewUsage
     Name="EmployeeVO1"
     ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeVO"/>
+  <ViewUsage
+    Name="EmployeeDetails1"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.delete.EmployeeDetails"/>
+  <ViewUsage
+    Name="EmployeeDetails"
+    ViewObjectName="com.packt.jdeveloper.cookbook.hr.components.delete.EmployeeDetails"/>
   <ViewLinkUsage
     Name="EmpManagerFkLink1"
     ViewLinkObjectName="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink"
@@ -97,16 +112,6 @@
         Type="java.lang.Boolean"/>
     </Method>
     <Method
-      Name="adjustCommission"
-      MethodName="adjustCommission">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="commissionPctAdjustment"
-        Type="oracle.jbo.domain.Number"/>
-    </Method>
-    <Method
       Name="prepare"
       MethodName="prepare">
       <Return
@@ -126,6 +131,69 @@
       <Return
         Name="_return_type_"
         Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="createOnPolymorphicVO"
+      MethodName="createOnPolymorphicVO">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="changingQueryModeDynamically"
+      MethodName="changingQueryModeDynamically">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="findEmployeeForEmpId"
+      MethodName="findEmployeeForEmpId">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmployeeDetailsVOWithBindVar"
+      MethodName="executeEmployeeDetailsVOWithBindVar">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="rowMatchExamples"
+      MethodName="rowMatchExamples">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmployeeVOWithDynamicVC"
+      MethodName="executeEmployeeVOWithDynamicVC">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="alterVCAndSaveState"
+      MethodName="alterVCAndSaveState">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="applyVCRowWithConjunction"
+      MethodName="applyVCRowWithConjunction">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="jointwoVCAndSaveState"
+      MethodName="jointwoVCAndSaveState">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
     </Method>
   </ClientInterface>
   <ServiceInterface

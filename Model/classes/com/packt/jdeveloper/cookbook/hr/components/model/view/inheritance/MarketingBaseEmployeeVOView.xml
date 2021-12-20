@@ -14,11 +14,12 @@
   SelectAllAttributes="false"
   FetchMode="FETCH_AS_NEEDED"
   PageIterMode="Full"
+  AccessMode="DEFAULT"
   RowClass="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance.MarketingBaseEmployeeVOViewRowImpl"
   ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance.MarketingBaseEmployeeVOViewImpl"
-  AccessMode="DEFAULT">
+  DefClass="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance.MarketingBaseEmployeeVOViewDefImpl">
   <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Def|Coll"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <EntityUsage

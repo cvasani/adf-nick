@@ -63,12 +63,9 @@ public class EmployeeImpl extends ExtEntityImpl {
         DepartmentEmployees,
         EmployeeDepartment,
         Department,
-        EmployeeEO,
-        EmployeeEO1,
-        DepartmentEO,
-        DepartmentEO1,
         EmployeeCount;
         private static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         protected int index() {
@@ -109,10 +106,6 @@ public class EmployeeImpl extends ExtEntityImpl {
     public static final int DEPARTMENTEMPLOYEES = AttributesEnum.DepartmentEmployees.index();
     public static final int EMPLOYEEDEPARTMENT = AttributesEnum.EmployeeDepartment.index();
     public static final int DEPARTMENT = AttributesEnum.Department.index();
-    public static final int EMPLOYEEEO = AttributesEnum.EmployeeEO.index();
-    public static final int EMPLOYEEEO1 = AttributesEnum.EmployeeEO1.index();
-    public static final int DEPARTMENTEO = AttributesEnum.DepartmentEO.index();
-    public static final int DEPARTMENTEO1 = AttributesEnum.DepartmentEO1.index();
     public static final int EMPLOYEECOUNT = AttributesEnum.EmployeeCount.index();
 
     /**
@@ -354,47 +347,6 @@ public class EmployeeImpl extends ExtEntityImpl {
         setAttributeInternal(EMPLOYEEDEPARTMENT, value);
     }
 
-    /**
-     * @return the associated entity EmployeeEOImpl.
-     */
-    public EmployeeEOImpl getEmployeeEO() {
-        return (EmployeeEOImpl) getAttributeInternal(EMPLOYEEEO);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeEOImpl.
-     */
-    public void setEmployeeEO(EmployeeEOImpl value) {
-        setAttributeInternal(EMPLOYEEEO, value);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployeeEO1() {
-        return (RowIterator) getAttributeInternal(EMPLOYEEEO1);
-    }
-
-    /**
-     * @return the associated entity DepartmentEOImpl.
-     */
-    public DepartmentEOImpl getDepartmentEO() {
-        return (DepartmentEOImpl) getAttributeInternal(DEPARTMENTEO);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity DepartmentEOImpl.
-     */
-    public void setDepartmentEO(DepartmentEOImpl value) {
-        setAttributeInternal(DEPARTMENTEO, value);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getDepartmentEO1() {
-        return (RowIterator) getAttributeInternal(DEPARTMENTEO1);
-    }
 
     /**
      * @return the associated entity DepartmentImpl.

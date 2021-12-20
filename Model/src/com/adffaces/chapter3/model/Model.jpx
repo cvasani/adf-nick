@@ -81,6 +81,15 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="delete"
+    PackageName="com.packt.jdeveloper.cookbook.hr.components.delete"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="application"
     PackageName="com.packt.jdeveloper.cookbook.hr.components.model.application"
     ObjectType="JboPackage">
@@ -102,24 +111,7 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_EO" Value="true"/>
-      <Attr Name="_AS" Value="true"/>
       <Attr Name="_AM" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
-    Name="inheritance"
-    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_EO" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
-    Name="inheritance"
-    PackageName="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_VO" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee
@@ -136,7 +128,6 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_VO" Value="true"/>
-      <Attr Name="_VL" Value="true"/>
     </DesignTime>
   </Containee>
   <Containee

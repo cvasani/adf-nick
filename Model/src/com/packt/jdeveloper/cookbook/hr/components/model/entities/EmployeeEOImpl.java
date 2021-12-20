@@ -29,16 +29,8 @@ public class EmployeeEOImpl extends EntityImpl {
         Salary,
         CommissionPct,
         ManagerId,
-        DepartmentId,
-        Employee,
-        Department,
-        ManagerIdEmployeeEO,
-        EmployeeEO,
-        Department1,
-        Employee1,
-        DepartmentEO,
-        DepartmentEO1;
-        private static AttributesEnum[] vals = null;
+        DepartmentId;
+        private static AttributesEnum[] vals = null; ;
         private static final int firstIndex = 0;
 
         protected int index() {
@@ -73,20 +65,20 @@ public class EmployeeEOImpl extends EntityImpl {
     public static final int COMMISSIONPCT = AttributesEnum.CommissionPct.index();
     public static final int MANAGERID = AttributesEnum.ManagerId.index();
     public static final int DEPARTMENTID = AttributesEnum.DepartmentId.index();
-    public static final int EMPLOYEE = AttributesEnum.Employee.index();
-    public static final int DEPARTMENT = AttributesEnum.Department.index();
-    public static final int MANAGERIDEMPLOYEEEO = AttributesEnum.ManagerIdEmployeeEO.index();
-    public static final int EMPLOYEEEO = AttributesEnum.EmployeeEO.index();
-    public static final int DEPARTMENT1 = AttributesEnum.Department1.index();
-    public static final int EMPLOYEE1 = AttributesEnum.Employee1.index();
-    public static final int DEPARTMENTEO = AttributesEnum.DepartmentEO.index();
-    public static final int DEPARTMENTEO1 = AttributesEnum.DepartmentEO1.index();
 
     /**
      * This is the default constructor (do not remove).
      */
     public EmployeeEOImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEO");
+    }
+
 
     /**
      * Gets the attribute value for EmployeeId, using the alias name EmployeeId.
@@ -265,90 +257,6 @@ public class EmployeeEOImpl extends EntityImpl {
     }
 
     /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployee() {
-        return (RowIterator) getAttributeInternal(EMPLOYEE);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getDepartment() {
-        return (RowIterator) getAttributeInternal(DEPARTMENT);
-    }
-
-    /**
-     * @return the associated entity EmployeeEOImpl.
-     */
-    public EmployeeEOImpl getManagerIdEmployeeEO() {
-        return (EmployeeEOImpl) getAttributeInternal(MANAGERIDEMPLOYEEEO);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeEOImpl.
-     */
-    public void setManagerIdEmployeeEO(EmployeeEOImpl value) {
-        setAttributeInternal(MANAGERIDEMPLOYEEEO, value);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployeeEO() {
-        return (RowIterator) getAttributeInternal(EMPLOYEEEO);
-    }
-
-    /**
-     * @return the associated entity DepartmentImpl.
-     */
-    public DepartmentImpl getDepartment1() {
-        return (DepartmentImpl) getAttributeInternal(DEPARTMENT1);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity DepartmentImpl.
-     */
-    public void setDepartment1(DepartmentImpl value) {
-        setAttributeInternal(DEPARTMENT1, value);
-    }
-
-    /**
-     * @return the associated entity EmployeeImpl.
-     */
-    public EmployeeImpl getEmployee1() {
-        return (EmployeeImpl) getAttributeInternal(EMPLOYEE1);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeImpl.
-     */
-    public void setEmployee1(EmployeeImpl value) {
-        setAttributeInternal(EMPLOYEE1, value);
-    }
-
-    /**
-     * @return the associated entity DepartmentEOImpl.
-     */
-    public DepartmentEOImpl getDepartmentEO() {
-        return (DepartmentEOImpl) getAttributeInternal(DEPARTMENTEO);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity DepartmentEOImpl.
-     */
-    public void setDepartmentEO(DepartmentEOImpl value) {
-        setAttributeInternal(DEPARTMENTEO, value);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getDepartmentEO1() {
-        return (RowIterator) getAttributeInternal(DEPARTMENTEO1);
-    }
-
-    /**
      * @param employeeId key constituent
 
      * @return a Key object based on given key constituents.
@@ -357,11 +265,27 @@ public class EmployeeEOImpl extends EntityImpl {
         return new Key(new Object[] { employeeId });
     }
 
+
+    //In EmployeeEOImpl class
+    //    Reading the originally retrieved attribute value
+    // Call getAttribute(attrIndex,EntityImpl.ORIGINAL_VERSION) on an
+    //entity object. An example is shown as follows:
+    //old and new value
+// getPostedAttribute also helps    
+
     /**
-     * @return the definition object for this instance class.
+     * Validation method for Salary hike.
      */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEO");
+    public boolean validateSalaryHike(BigDecimal newSalary) {
+        //Gets the attribute index for'Salary'
+        int attribIndex = EmployeeEOImpl.SALARY;
+        //Read originally retrieved value of 'Salary'
+        BigDecimal originalSlary = (BigDecimal) getAttribute(attribIndex, EntityImpl.ORIGINAL_VERSION);
+        //returns false if the revised slary is less
+        if (newSalary.compareTo(originalSlary) > 0)
+            return true;
+        else
+            return false;
     }
 
 

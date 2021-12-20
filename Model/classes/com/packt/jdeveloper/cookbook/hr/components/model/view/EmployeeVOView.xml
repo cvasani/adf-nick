@@ -94,14 +94,4 @@
     ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFkLink_Jobinesh"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="Departments"
-    ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.DeptMgrFkLink"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="EmployeeVO"
-    ViewLink="com.packt.jdeveloper.cookbook.hr.components.model.view.link.EmpManagerFk1Link"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
 </ViewObject>

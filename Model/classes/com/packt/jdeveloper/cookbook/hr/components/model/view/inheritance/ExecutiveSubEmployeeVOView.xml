@@ -14,13 +14,7 @@
   SelectAllAttributes="false"
   FetchMode="FETCH_AS_NEEDED"
   PageIterMode="Full"
-  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance.ExecutiveSubEmployeeVOViewRowImpl"
-  ComponentClass="com.packt.jdeveloper.cookbook.hr.components.model.view.inheritance.ExecutiveSubEmployeeVOViewImpl"
   AccessMode="DEFAULT">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
-    <Attr Name="_isCodegen" Value="true"/>
-  </DesignTime>
   <EntityUsage
     Name="ExecutiveSubEmployeeEO"
     Entity="com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance.ExecutiveSubEmployeeEO"/>

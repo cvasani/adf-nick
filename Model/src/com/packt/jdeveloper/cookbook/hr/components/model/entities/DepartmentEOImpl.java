@@ -18,12 +18,9 @@ public class DepartmentEOImpl extends EntityImpl {
         DepartmentId,
         DepartmentName,
         ManagerId,
-        LocationId,
-        Employee,
-        EmployeeEO,
-        Employee1,
-        EmployeeEO1;
+        LocationId;
         private static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         protected int index() {
@@ -45,20 +42,26 @@ public class DepartmentEOImpl extends EntityImpl {
             return vals;
         }
     }
+
+
     public static final int DEPARTMENTID = AttributesEnum.DepartmentId.index();
     public static final int DEPARTMENTNAME = AttributesEnum.DepartmentName.index();
     public static final int MANAGERID = AttributesEnum.ManagerId.index();
     public static final int LOCATIONID = AttributesEnum.LocationId.index();
-    public static final int EMPLOYEE = AttributesEnum.Employee.index();
-    public static final int EMPLOYEEEO = AttributesEnum.EmployeeEO.index();
-    public static final int EMPLOYEE1 = AttributesEnum.Employee1.index();
-    public static final int EMPLOYEEEO1 = AttributesEnum.EmployeeEO1.index();
 
     /**
      * This is the default constructor (do not remove).
      */
     public DepartmentEOImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentEO");
+    }
+
 
     /**
      * Gets the attribute value for DepartmentId, using the alias name DepartmentId.
@@ -125,48 +128,6 @@ public class DepartmentEOImpl extends EntityImpl {
     }
 
     /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployee() {
-        return (RowIterator) getAttributeInternal(EMPLOYEE);
-    }
-
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getEmployeeEO() {
-        return (RowIterator) getAttributeInternal(EMPLOYEEEO);
-    }
-
-    /**
-     * @return the associated entity EmployeeImpl.
-     */
-    public EmployeeImpl getEmployee1() {
-        return (EmployeeImpl) getAttributeInternal(EMPLOYEE1);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeImpl.
-     */
-    public void setEmployee1(EmployeeImpl value) {
-        setAttributeInternal(EMPLOYEE1, value);
-    }
-
-    /**
-     * @return the associated entity EmployeeEOImpl.
-     */
-    public EmployeeEOImpl getEmployeeEO1() {
-        return (EmployeeEOImpl) getAttributeInternal(EMPLOYEEEO1);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity EmployeeEOImpl.
-     */
-    public void setEmployeeEO1(EmployeeEOImpl value) {
-        setAttributeInternal(EMPLOYEEEO1, value);
-    }
-
-    /**
      * @param departmentId key constituent
 
      * @return a Key object based on given key constituents.
@@ -175,11 +136,6 @@ public class DepartmentEOImpl extends EntityImpl {
         return new Key(new Object[] { departmentId });
     }
 
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("com.packt.jdeveloper.cookbook.hr.components.model.entities.DepartmentEO");
-    }
+
 }
 

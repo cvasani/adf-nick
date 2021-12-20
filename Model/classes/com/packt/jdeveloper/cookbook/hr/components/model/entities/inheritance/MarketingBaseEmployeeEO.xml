@@ -9,12 +9,7 @@
   DBObjectType="table"
   DBObjectName="EMPLOYEES"
   AliasName="MarketingBaseEmployeeEO"
-  BindingStyle="OracleName"
-  RowClass="com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance.MarketingBaseEmployeeEOImpl">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access"/>
-    <Attr Name="_isCodegen" Value="true"/>
-  </DesignTime>
+  BindingStyle="OracleName">
   <Attribute
     Name="EmployeeId"
     IsNotNull="true"

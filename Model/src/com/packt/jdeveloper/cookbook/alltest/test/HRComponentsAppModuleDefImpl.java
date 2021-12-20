@@ -15,5 +15,7 @@ public class HRComponentsAppModuleDefImpl extends ApplicationModuleDefImpl {
     }
     
     public void testSQLProcedure(){}
+    
+    
 }
 

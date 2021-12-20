@@ -1,5 +1,8 @@
 package com.packt.jdeveloper.cookbook.alltest.test;
 
+import com.packt.jdeveloper.cookbook.hr.components.delete.EmployeeDetailsImpl;
+import com.packt.jdeveloper.cookbook.hr.components.delete.ExecutiveSubEmployeeVOViewImpl;
+import com.packt.jdeveloper.cookbook.hr.components.delete.SalesSubEmployeeVOViewImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.DepartmentsImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeCountImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.view.EmployeeVOImpl;
@@ -11,6 +14,7 @@ import com.packt.jdeveloper.cookbook.shared.bc.database.SQLProcedure;
 import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtViewObjectImpl;
 import com.packt.jdeveloper.cookbook.alltest.test.common.HRComponentsAppModule;
 
+import com.packt.jdeveloper.cookbook.hr.components.delete.MarketingBaseEmployeeVOViewImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEODefImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl;
 import com.packt.jdeveloper.cookbook.hr.components.model.entities.inheritance.MarketingBaseEmployeeEOImpl;
@@ -24,19 +28,36 @@ import oracle.jbo.server.ViewLinkImpl;
 import com.packt.jdeveloper.cookbook.shared.bc.extensions.ExtApplicationModuleImpl;
 
 
+import com.packt.jdeveloper.cookbook.shared.bc.utilviews.BCUtils;
+
 import java.math.BigDecimal;
 
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
 
 import oracle.adf.share.logging.ADFLogger;
 
+import oracle.jbo.AttributeHints;
 import oracle.jbo.JboException;
 import oracle.jbo.Key;
 import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
+import oracle.jbo.RowIterator;
+import oracle.jbo.RowMatch;
 import oracle.jbo.RowSetIterator;
+import oracle.jbo.Variable;
+import oracle.jbo.VariableValueManager;
 import oracle.jbo.ViewCriteria;
+import oracle.jbo.ViewCriteriaItem;
+import oracle.jbo.ViewCriteriaManager;
+import oracle.jbo.ViewCriteriaRow;
+import oracle.jbo.ViewObject;
+import oracle.jbo.common.JboCompOper;
+import oracle.jbo.common.VariableImpl;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.EntityDefImpl;
 import oracle.jbo.server.ViewLinkImpl;
@@ -362,6 +383,50 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         }
     }
 
+
+    //In application module implementation class
+    public void createOnPolymorphicVO() {
+        Row row = null;
+        NameValuePairs nvp = null;
+        //Get the polymorphic VO
+        MarketingBaseEmployeeVOViewImpl vo = (MarketingBaseEmployeeVOViewImpl) getMarketingBaseEmployeeVOView1();
+        nvp = new NameValuePairs();
+        nvp.setAttribute("DepartmentId", "90");
+        //VO delegates the createAndInitRow() call to
+        //SalesEmployeeExEO as DepartmentId=90
+        row = vo.createAndInitRow(nvp);
+        nvp = new NameValuePairs();
+        nvp.setAttribute("DepartmentId", "80");
+        //Vo delgates the createAndInitRow() call to
+        //ExecutiveEmployeeExEO as DepartmentId=80
+        row = vo.createAndInitRow(nvp);
+    }
+
+
+    /**
+     * Container's getter for MarketingBaseEmployeeVOView1.
+     * @return MarketingBaseEmployeeVOView1
+     */
+    public com.packt.jdeveloper.cookbook.hr.components.delete.MarketingBaseEmployeeVOViewImpl getMarketingBaseEmployeeVOView1() {
+        return (com.packt.jdeveloper.cookbook.hr.components.delete.MarketingBaseEmployeeVOViewImpl) findViewObject("MarketingBaseEmployeeVOView1");
+    }
+
+    /**
+     * Container's getter for SalesSubEmployeeVOView1.
+     * @return SalesSubEmployeeVOView1
+     */
+    public SalesSubEmployeeVOViewImpl getSalesSubEmployeeVOView1() {
+        return (SalesSubEmployeeVOViewImpl) findViewObject("SalesSubEmployeeVOView1");
+    }
+
+    /**
+     * Container's getter for ExecutiveSubEmployeeVOView1.
+     * @return ExecutiveSubEmployeeVOView1
+     */
+    public ExecutiveSubEmployeeVOViewImpl getExecutiveSubEmployeeVOView1() {
+        return (ExecutiveSubEmployeeVOViewImpl) findViewObject("ExecutiveSubEmployeeVOView1");
+    }
+
     /**
      * Container's getter for EmployeeVO1.
      * @return EmployeeVO1
@@ -370,22 +435,435 @@ public class HRComponentsAppModuleImpl extends ExtApplicationModuleImpl implemen
         return (EmployeeVOImpl) findViewObject("EmployeeVO1");
     }
 
-//    //In application module implementation class
-//    public void createOnPolymorphicVO() {
-//        Row row = null;
-//        NameValuePairs nvp = null;
-//        //Get the polymorphic VO
-//        MarketingBaseEmployeeVOViewImpl vo = (MarketingBaseEmployeeVOViewImpl) getMarketingBaseEmployeeEOView1();
-//        nvp = new NameValuePairs();
-//        nvp.setAttribute("DepartmentId", "90");
-//        //VO delegates the createAndInitRow() call to
-//        //SalesEmployeeExEO as DepartmentId=90
-//        row = vo.createAndInitRow(nvp);
-//        nvp = new NameValuePairs();
-//        nvp.setAttribute("DepartmentId", "80");
-//        //Vo delgates the createAndInitRow() call to
-//        //ExecutiveEmployeeExEO as DepartmentId=80
-//        row = vo.createAndInitRow(nvp);
-//    }
+    public void changingQueryModeDynamically() {
+        //Possible view object modes are
+        //1. ViewObject.QUERY_MODE_SCAN_DATABASE_TABLES
+        //2. ViewObject.QUERY_MODE_SCAN_VIEW_ROWS
+        //3. ViewObject.QUERY_MODE_SCAN_ENTITY_ROWS
+        //Get the view object
+
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        //Fires query against database(default query mode)
+        vo.executeQuery();
+        //Rest of the business logic goes here..
+        //This e.g just prints all rows
+        //In real life application, you can process the rows here
+        while (vo.hasNext()) {
+            Row r = vo.next();
+            String email = (String) r.getAttribute("Email");
+            //    System.out.println("Employee with email -" + email);
+        }
+        //Now find all employees whose last name start with 'P'
+        //This is done against the rows in the cache(no DB hit)
+        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_ENTITY_ROWS);
+        ViewCriteria vc = vo.createViewCriteria();
+        ViewCriteriaRow vcr1 = vc.createViewCriteriaRow();
+        vcr1.setAttribute("LastName", "LIKE 'P%'");
+        //only getting data from preexecuted result
+        //        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_ENTITY_ROWS);
+        //    vc.setCriteriaMode(ViewCriteria.CRITERIA_MODE_CACHE | ViewCriteria.CRITERIA_MODE_QUERY);
+
+        //Asking vo to go for DB Scan and VC also going for either RowMatch or Whereclause mode
+        //        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_DATABASE_TABLES);
+        //        vc.setCriteriaMode(ViewCriteria.CRITERIA_MODE_CACHE | ViewCriteria.CRITERIA_MODE_QUERY);
+
+        //Asking both and all
+        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_DATABASE_TABLES | ViewObject.QUERY_MODE_SCAN_ENTITY_ROWS);
+        vc.setCriteriaMode(ViewCriteria.CRITERIA_MODE_CACHE | ViewCriteria.CRITERIA_MODE_QUERY);
+
+        vc.add(vcr1);
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
+        while (vo.hasNext()) {
+            Row r = vo.next();
+            //        BCUtils.printRow(vo, r);
+        }
+
+        //    Keeping the old View Criteria and applying null
+        vo.applyViewCriteria(null, true);
+
+        System.out.println(vo.getQuery());
+
+
+        //   Removing the old View Criteria and applying null
+
+        //        vo.applyViewCriteria(null, false);
+
+        //        System.out.println(vo.getQuery());
+
+        //        ==== where clase start
+        vo.setWhereClause("Employees.FIRST_NAME = :bindVarFirstName");
+        //Define the bind variable
+        vo.defineNamedWhereClauseParam("bindVarFirstName", null, null);
+        //Set the bind param value
+        vo.setNamedWhereClauseParam("bindVarFirstName", "Tom");
+        System.out.println(vo.getQuery());
+        //== where clause end
+
+        //
+        //you cansee that there is no effect of VC on where clause
+        vo.applyViewCriteria(null, false);
+        System.out.println(vo.getQuery());
+
+        vo.setWhereClause(null);
+        System.out.println(vo.getQuery());
+
+    }
+
+
+    // Appending the WHERE clause at runtime
+    //This is in application module implementation class
+    public void executeEmployeeDetailsVOWithBindVar() {
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        //Append WHERE cluase
+        //        vo.executeQuery();
+        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_DATABASE_TABLES | ViewObject.QUERY_MODE_SCAN_ENTITY_ROWS);
+        vo.setWhereClause("Employees.FIRST_NAME = :bindVarFirstName");
+        //Define the bind variable
+        vo.defineNamedWhereClauseParam("bindVarFirstName", null, null);
+        //Set the bind param value
+        vo.setNamedWhereClauseParam("bindVarFirstName", "Tom");
+        //        Sorting
+        vo.setSortBy("FirstName desc");
+        //vo.executeQuery();
+
+        //soring with clause where you need to show Entity and Alias info
+
+        //ViewObject vo = findViewObject("EmployeeDetails");
+        //vo.setOrderByClause("Employees.FIRST_NAME ASC");
+        vo.executeQuery();
+        System.out.println(vo.getQuery());
+    }
+
+
+    // Appending the WHERE clause at runtime bind variable example
+    //In application module implementation class
+    public void findEmployeeForEmpId() {
+        Integer empId = 100;
+        ViewObject employeeVO = findViewObject("EmployeeVO1");
+        //Define WHERE clause
+        String whereClause = "EmployeeEO.Employee_id = :empId";
+        employeeVO.setWhereClause(whereClause);
+        employeeVO.defineNamedWhereClauseParam("empId", null, null);
+        employeeVO.setNamedWhereClauseParam("empId", empId);
+        employeeVO.executeQuery();
+        BCUtils.printRow(employeeVO, employeeVO.first());
+        //        return employeeVO.first();
+        return;
+    }
+
+    //RowMatch Examples from Jobinesh
+    public void rowMatchExamples() {
+        //In a method defined in application module implementation
+        //class
+        //Get row to be checked from employee view object
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        vo.executeQuery();
+        vo.first();
+        Row row = vo.getCurrentRow();
+        //Set the condition for in memory filtering
+        RowMatch rm = new RowMatch("FirstName = 'William'");
+        System.out.println(row.getAttribute("FirstName"));
+        // alternatively use rm.setWhereClause( condition );
+        if (rm.rowQualifies(row)) {
+            System.out.println("got the matching row");
+        }
+
+        //In a method defined in application module implementation
+        //class
+        //Get employee view object
+        //        ViewObject vo = findViewObject("EmployeeDetails");
+        //Set the condition for in memory filtering
+        RowMatch rm1 = new RowMatch("FirstName like 'J%'");
+        vo.setRowMatch(rm1);
+        vo.executeQuery();
+        BCUtils.printRow(vo, vo.first());
+
+        RowMatch rm2 = new RowMatch("LastName = :bvLastName");
+        //        vo.defineNamedWhereClauseParam("bvLastName", null, null);
+        vo.getVariableManager().addVariable("bvLastName");
+        vo.getVariableManager().setVariableValue("bvLastName", "Grant");
+        vo.setRowMatch(rm2);
+        vo.executeQuery();
+        BCUtils.printRow(vo, vo.first());
+
+        //        SQL Function supported
+
+        RowMatch rm3 = new RowMatch("UPPER(FirstName) = UPPER(:bvFirstName)");
+
+    }
+
+
+    //In application module implementation class
+    public void executeEmployeeVOWithDynamicVC() {
+        //Get the desired view object
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        //Build View Criteria first
+        ViewCriteria vc = vo.createViewCriteria();
+        //Create View Criteria Row
+        ViewCriteriaRow vcr = vc.createViewCriteriaRow();
+        //Set the QBE
+        vcr.setAttribute("FirstName", "LIKE 'J%'");
+        //Optionally override the default criteria mode-Database
+        vc.setCriteriaMode(ViewCriteria.CRITERIA_MODE_QUERY | ViewCriteria.CRITERIA_MODE_CACHE);
+        //Add View Criteria Row
+        vc.add(vcr);
+        //Execute Query, Framework will generate a WHERE clause
+        //for the above VC as
+        //SELECT … FROM … WHERE EmployeeEO.LAST_NAME LIKE
+        //:vc_temp_1
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
+        System.out.println(vo.getQuery());
+    }
+
+
+    /**
+     * This method creates view criteria programmatically and
+     * Dynamic VC with Bind Variable : This needs extra care
+     * returns it to the caller.
+     * This is defined inside EmployeeViewObjectImpl.
+     */
+    public ViewCriteria CreateVCForEmpName() {
+        //Get the VariableValueManager who is responsible for
+        //managing bind vairbales
+        VariableValueManager vvm = ensureVariableManager();
+        //Create View Criteria
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        ViewCriteria vc = vo.createViewCriteria();
+        ViewCriteriaRow vcr = vc.createViewCriteriaRow();
+        //Create View Criteria Item and set operator
+        ViewCriteriaItem vci = vcr.ensureCriteriaItem("FirstName");
+        vci.setOperator(JboCompOper.OPER_LIKE);
+        vci.setRequired(ViewCriteriaItem.VCITEM_REQUIRED);
+        //Define bind variable and init properties
+        VariableImpl fstNameVar = (VariableImpl) vvm.addVariable("dynamicBindVarAttribute");
+        fstNameVar.setJavaType(String.class);
+        fstNameVar.setMandatory(true);
+        fstNameVar.setUpdateableFlag(oracle.jbo
+                                           .Variable
+                                           .UPDATEABLE);
+        fstNameVar.setVariableKind(Variable.VAR_KIND_VIEW_CRITERIA_PARAM);
+        fstNameVar.setProperty(AttributeHints.ATTRIBUTE_DISPLAY_HINT, AttributeHints.ATTRIBUTE_DISPLAY_HINT_HIDE);
+        //Add bind variable to VC Item as value
+        vci.setValue(0, ":dynamicBindVarAttribute");
+        vci.setIsBindVarValue(0, true);
+        //Initialize bind variable value
+        vvm.setVariableValue(fstNameVar, "A%");
+        //Insert View Criteria Row to VC
+        vc.insertRow(vcr);
+        vo.applyViewCriteria(vc);
+        return vc;
+    }
+
+    //In application module implementation class
+    public void unApplyVC(String viewCriteriaCNameToBeRemoved) {
+        //Get Employee view object
+        ViewObjectImpl vo = (ViewObjectImpl) findViewObject("EmployeeDetails1");
+        vo.removeApplyViewCriteriaName(viewCriteriaCNameToBeRemoved);
+    }
+
+
+    // Show employees with JobId=IT_PROG and DepartmentId <> 60
+    public void applyVCRowWithConjunction() {
+        //Get employee view object
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        ViewCriteria vc = vo.createViewCriteria();
+        ViewCriteriaRow vcRow1 = vc.createViewCriteriaRow();
+        vcRow1.setAttribute("JobId", "IT_PROG");
+        vc.addElement(vcRow1);
+        ViewCriteriaRow vcRow2 = vc.createViewCriteriaRow();
+        vcRow2.setAttribute("DepartmentId", "= 10");
+        vcRow2.setConjunction(ViewCriteriaRow.VC_CONJ_AND | ViewCriteriaRow.VC_CONJ_NOT);
+        vc.addElement(vcRow2);
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
+    }
+
+
+    //In application module implementation class
+    // Altering the VC with new Row and save it for future use
+    public void alterVCAndSaveState() {
+        //Get Employee view object
+        ViewObject vo = findViewObject("EmployeeDetails1");
+        ViewCriteriaManager vcm = vo.getViewCriteriaManager();
+        //Get an existing VC
+        ViewCriteria vc = vcm.getViewCriteria("EmployeeDetailsVC");
+        //Add new condition to VC
+        ViewCriteriaRow vcr = vc.createViewCriteriaRow();
+        vcr.setAttribute("EmployeeId", "IN (1000,2000)");
+        vc.add(vcr);
+        //Persist the changes
+        vc.saveState();
+        vo.applyViewCriteria(vc);
+        System.out.println(vo.getQuery());
+
+        ViewObject vo2 = findViewObject("EmployeeDetails1");
+        ViewCriteriaManager vcm2 = vo.getViewCriteriaManager();
+        //Get an existing VC
+        ViewCriteria vc2 = vcm2.getViewCriteria("EmployeeDetailsVC");
+        vo2.applyViewCriteria(vc2);
+        System.out.println(vo2.getQuery());
+    }
+
+
+    //In application module implementation class
+    //Get employee view object
+    //    Union ofthe two criteria
+    public void jointwoVCAndSaveState() {
+        //Get Employee view object
+        ViewObject vo = findViewObject("EmployeeDetails");
+        ViewCriteriaManager vcm = vo.getViewCriteriaManager();
+        //Get an existing VC
+        ViewCriteria vcu = vo.createViewCriteria();
+        vcu.setConjunction(ViewCriteria.VC_CONJ_UNION);
+        //Add first VC
+        vcu.add(vcm.getViewCriteria("JobCriteria"));
+        //Add next VC
+        vcu.add(vcm.getViewCriteria("SalCriteria"));
+        vo.applyViewCriteria(vcu);
+        vo.executeQuery();
+        System.out.println(vo.getQuery());
+    }
+
+
+    //In application module implementation class
+    //    Altnernate key for composite PVO
+    public void findByAlKey() {
+        ViewObject vo = findViewObject("EmployeeDetails");
+        //EmployeeDeptDetailVO has two entity objects EmpEO and
+        //DeptEO. The alt key EmpDeptAltKey is defined on
+        //EmployeeDeptDetailVO by selecting alt keys from both the
+        // EO
+        Key empDeptAltKey = new Key(new Object[] { "JWHALEN", "Administration" });
+        //findByAltKey() has the following method signature :
+        //findByAltKey(String keyName, Key key, int maxNumOfRows,
+        //boolean skipWhere)
+        RowIterator iter = vo.findByAltKey("EmpDeptAltKey", empDeptAltKey, -1, false);
+    }
+
+    /**
+     * Container's getter for EmployeeDetails1.
+     * @return EmployeeDetails1
+     */
+    public EmployeeDetailsImpl getEmployeeDetails1() {
+        return (EmployeeDetailsImpl) findViewObject("EmployeeDetails1");
+    }
+
+    /**
+     * Container's getter for EmployeeDetails2.
+     * @return EmployeeDetails2
+     */
+    public EmployeeDetailsImpl getEmployeeDetails() {
+        return (EmployeeDetailsImpl) findViewObject("EmployeeDetails");
+    }
+
+
+    //In application module implementation class
+
+    /**
+     * Calling Stored Procedure using a Statement.
+     * Find department details using department id. This method
+     * uses CallableStatement for executing stored procedure.
+     * @param departmentId
+     */
+    public void findDepartmentById(Integer departmentId) throws SQLException, SQLException {
+        String stmt = "call departments_api.select_department(?,?,?,?)";
+        // Create a CallableStatement for invoking stored procedure
+        CallableStatement cs = getDBTransaction().createCallableStatement(stmt, 0);
+        try {
+            // Register the OUT parameters and types
+            cs.registerOutParameter(2, Types.VARCHAR);
+            cs.registerOutParameter(3, Types.NUMERIC);
+            cs.registerOutParameter(4, Types.NUMERIC);
+            //Register IN parameter
+            cs.setObject(1, departmentId);
+            // Execute the statement
+            cs.executeQuery();
+            // Retrieve the column values
+            String deptName = cs.getString(2);
+            BigDecimal managerId = cs.getBigDecimal(3);
+            BigDecimal locId = cs.getBigDecimal(4);
+            // Add your code here for further processing
+        } finally {
+            if (cs != null) {
+                //Closing the statement
+                cs.close();
+            }
+        }
+    }
+
+
+    /**
+     * Finds employee id using email id. This method uses
+     * PreparedStatement for executing SQL
+     * @param email
+     * @return
+     * @throws SQLException
+     */
+    public Long findEmployeeIdByEmail(String email) throws SQLException {
+        Long empId = null;
+        ResultSet rs = null;
+        PreparedStatement stmnt = null;
+        try {
+            int noRowsPrefetch = 1;
+            String query = "SELECT Emp.EMPLOYEE_ID FROM EMPLOYEES" + " Emp WHERE Emp.EMAIL = ?";
+            //Create a PreparedStatement for SQL call
+            stmnt = getDBTransaction().createPreparedStatement(query, noRowsPrefetch);
+            //Set the inpute parameter
+            stmnt.setObject(1, email);
+            rs = stmnt.executeQuery();
+            if (rs.next()) {
+                empId = rs.getLong(1);
+            }
+        } finally {
+            //Close the result set
+            if (rs != null) {
+                rs.close();
+            }
+            //Close the statement
+            if (stmnt != null) {
+                stmnt.close();
+            }
+        }
+        return empId;
+    }
+
+    //In application module implementation class
+
+    /**
+     * Commit the transaction
+     */
+    public void commitTransaction() {
+        getDBTransaction().commit();
+    }
+
+    /**
+     * Rollback the transaction
+     */
+    public void rollbackTransaction() {
+        getDBTransaction().rollback();
+    }
+
+    //    UNDO or Save Point
+
+    /**
+     *This method save the state of application module and
+     * return save point id.
+     */
+    public String passivateStateForUndo(String savePointId) {
+        String savePoint = super.passivateStateForUndo(savePointId, null, PASSIVATE_UNDO_FLAG);
+        return savePoint;
+    }
+
+    /**
+     * This method restores the state to the stave point
+     */
+    public void activateStateForUndo(String savePointId) {
+        super.activateStateForUndo(savePointId, ACTIVATE_UNDO_FLAG);
+    }
+
+
 }
+
 

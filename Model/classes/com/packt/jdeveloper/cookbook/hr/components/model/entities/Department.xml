@@ -86,26 +86,23 @@
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <AccessorAttribute
-    Name="Employee"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Employee"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="EmployeeEO"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc.EmployeeEO"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.DeptMgrFkAssoc.Department"
-    Type="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmployeeEOImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
     Name="EmployeeEO1"
-    Association="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc"
-    AssociationEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.EmployeeEO1"
-    AssociationOtherEnd="com.packt.jdeveloper.cookbook.hr.components.model.entities.EmpDeptFkAssoc.Department1"
+    Association="EmpDeptFkAssoc"
+    AssociationEnd="EmpDeptFkAssoc.EmployeeEO1"
+    AssociationOtherEnd="EmpDeptFkAssoc.destEnd"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <Key
+    Name="DepartmentNameAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPARTMENTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.packt.jdeveloper.cookbook.hr.components.model.entities.Department.DepartmentName"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="DepartmentsDepartmentIdCheck">
     <DesignTime>
